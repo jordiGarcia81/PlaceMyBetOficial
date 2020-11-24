@@ -10,11 +10,11 @@ namespace PlaceMyBetOficial.Models.objects
 
     public long numTarjeta { get; set; }
     public string nombreBanco { get; set; }
-    public double saldo { get; set; }
+    public int saldo { get; set; }
     public string usuarioId { get; set; }
     public Usuario Usuario { get; set; }
 
-        public Cuenta(Int64 numTarjeta, string nombreBanco, double saldo, string usuarioId)
+        public Cuenta(int numTarjeta, string nombreBanco, int saldo, string usuarioId)
         {
             this.numTarjeta = numTarjeta;
             this.nombreBanco = nombreBanco;

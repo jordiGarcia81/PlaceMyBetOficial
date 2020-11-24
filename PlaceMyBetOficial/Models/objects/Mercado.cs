@@ -9,10 +9,10 @@ namespace PlaceMyBetOficial.Models.objects
     {
         public int MercadoId { get; set; }
         public string overUnder { get; set; }
-        public double cuotaOver { get; set; }
-        public double cuotaUnder { get; set; }
-        public double dineroOver { get; set; }
-        public double dineroUnder { get; set; }
+        public float cuotaOver { get; set; }
+        public float cuotaUnder { get; set; }
+        public float dineroOver { get; set; }
+        public float dineroUnder { get; set; }
         public int eventoId { get; set; }
         public List<Apuesta> apuestas { get; set; }
         public List<Evento> eventos { get; set; }
@@ -21,7 +21,7 @@ namespace PlaceMyBetOficial.Models.objects
         {
         }
 
-        public Mercado(int MercadoId, string overUnder, double cuotaOver, double cuotaUnder, double dineroOver, double dineroUnder, int eventoId)
+        public Mercado(int MercadoId, string overUnder, float cuotaOver, float cuotaUnder, float dineroOver, float dineroUnder, int eventoId)
         {
             this.MercadoId = MercadoId;
             this.overUnder = overUnder;

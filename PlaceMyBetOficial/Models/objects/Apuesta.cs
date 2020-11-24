@@ -10,7 +10,7 @@ namespace PlaceMyBetOficial.Models.objects
 
         public string tipoApuesta { get; set; }
         public string tipoMercado { get; set; }
-        public double dinero { get; set; }
+        public int dinero { get; set; }
         public DateTime fecha { get; set; }
         public int mercadoId { get; set; }
         public string usuarioId { get; set; }
@@ -21,7 +21,7 @@ namespace PlaceMyBetOficial.Models.objects
         {
         }
 
-        public Apuesta(int idApuesta, string tipoApuesta, string tipoMercado, double cuota, double dinero, DateTime fecha, int mercadosIdMercado, string usuariosEmail)
+        public Apuesta(int idApuesta, string tipoApuesta, string tipoMercado, int cuota, int dinero, DateTime fecha, int mercadosIdMercado, string usuariosEmail)
         {
             this.tipoApuesta = tipoApuesta;
             this.tipoMercado = tipoMercado;
