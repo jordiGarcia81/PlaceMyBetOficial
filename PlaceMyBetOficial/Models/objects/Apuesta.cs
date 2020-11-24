@@ -11,8 +11,11 @@ namespace PlaceMyBetOficial.Models.objects
         public string tipoApuesta { get; set; }
         public string tipoMercado { get; set; }
         public double dinero { get; set; }
-        public int idMercado { get; set; }
-        public string usuariosEmail { get; set; }
+        public DateTime fecha { get; set; }
+        public int mercadoId { get; set; }
+        public string usuarioId { get; set; }
+        public Usuario Usuario { get; set; }
+        public Mercado Mercado { get; set; }
 
         public Apuesta()
         {
@@ -23,29 +26,12 @@ namespace PlaceMyBetOficial.Models.objects
             this.tipoApuesta = tipoApuesta;
             this.tipoMercado = tipoMercado;
             this.dinero = dinero;
-            this.idMercado = idMercado;
-            this.usuariosEmail = usuariosEmail;
+            this.fecha = fecha;
+            this.mercadoId = mercadoId;
+            this.usuarioId = usuarioId;
         }
 
         
-        public class ApuestaDTO
-        {
-            public ApuestaDTO(string tipoApuesta, double tipoMercado, double cuota, double dinero, DateTime fecha, string usuariosEmail)
-            {
-                this.tipoApuesta = tipoApuesta;
-                this.tipoMercado = tipoMercado;
-                this.cuota = cuota;
-                this.dinero = dinero;
-                this.fecha = fecha;
-                this.usuariosEmail = usuariosEmail;
-            }
-
-            public string tipoApuesta { get; set; }
-            public double tipoMercado { get; set; }
-            public double cuota { get; set; }
-            public double dinero { get; set; }
-            public DateTime fecha { get; set; }
-            public string usuariosEmail { get; set; }
-        }
+       
     }
 }

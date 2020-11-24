@@ -13,8 +13,18 @@ namespace PlaceMyBetOficial.Controllers
 {
     public class ApuestasController : ApiController
     {
+        [Route("api/GetApuestas")]
+        [HttpGet]
+        public List<Apuesta> GetApuestas()
+        {
+            ApuestaRepository apuestaRepository = new ApuestaRepository();
+            List<Apuesta> listApuesta = apuestaRepository.GetApuestas();
+            return listApuesta;
+        }
+
         //[Authorize]
         [Route("api/GetApuestaDTO")]
+        [HttpPost]
         public List<ApuestaDTO> GetApuestaDTO()
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
@@ -31,6 +41,7 @@ namespace PlaceMyBetOficial.Controllers
 
             return true;
         }
+        // api/getApuestaUsuario?usuariosEmail=jordigarcia%40gmail.com&mercadosIdMercado=1
         [HttpPost]
         [Route("api/getApuestaUsuario")]
         public List<ResponseApuestasUsuario> getApuestaUsuario(string usuariosEmail, int mercadosIdMercado)
@@ -39,13 +50,13 @@ namespace PlaceMyBetOficial.Controllers
             List<ResponseApuestasUsuario> apuestas = apuestaRepository.getApuestaUsuario(usuariosEmail, mercadosIdMercado);
             return apuestas;
         }
-
+        // api/getApuestaMercado?usuariosEmail=jordigarcia%40gmail.com&tipoMercado=1.5
         [Route("api/getApuestaMercado")]
         [HttpPost]
-        public List<ResponseApuestasUsuario> getApuestaMercado(string usuariosEmail, double tipoMercado)
+        public List<ResponseApuestasMercado> getApuestaMercado(string usuariosEmail, double tipoMercado)
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
-            List<ResponseApuestasUsuario> apuestas = apuestaRepository.getApuestaMercado(usuariosEmail, tipoMercado);
+            List<ResponseApuestasMercado> apuestas = apuestaRepository.getApuestaMercado(usuariosEmail, tipoMercado);
             return apuestas;
         }
     }

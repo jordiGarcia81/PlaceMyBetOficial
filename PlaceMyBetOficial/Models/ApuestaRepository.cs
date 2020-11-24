@@ -30,9 +30,10 @@ namespace PlaceMyBetOficial.Models
         }
 
         public List<Apuesta> GetApuestas()
+
         {
-            database.connect();
-            MySqlDataReader res = database.query("SELECT * FROM puestas");
+            //database.connect();
+            MySqlDataReader res = database.query("SELECT * FROM apuestas ");
 
            Apuesta apuestas = null;
            List<Apuesta> apuesta = new List<Apuesta>();
@@ -42,24 +43,24 @@ namespace PlaceMyBetOficial.Models
                 apuestas = new Apuesta(res.GetInt32(0),res.GetString(1), res.GetString(2), res.GetDouble(3), res.GetDouble(4),res.GetDateTime(5), res.GetInt32(6), res.GetString(7));
                 apuesta.Add(apuestas);
             }
-            database.disconnect();
+           // database.disconnect();
             return apuesta;
         }
 
         internal List<ApuestaDTO> GetApuestaDTO()
         {
-            database.connect();
-            MySqlDataReader res = database.query("SELECT tipo_apuesta,tipo_mercado,cuota,dinero,fecha,Usuarios_email FROM apuestas");
+           // database.connect();
+            MySqlDataReader res = database.query("SELECT tipo_apuesta, tipo_mercado, dinero, fecha, Usuarios_email FROM apuestas");
 
             ApuestaDTO apuestas = null;
             List<ApuestaDTO> apuesta = new List<ApuestaDTO>();
 
             while (res.Read())
             {
-                apuestas = new ApuestaDTO(res.GetString(0),res.GetDouble(1) , res.GetDouble(2) , res.GetDouble(3) , res.GetDateTime(4),res.GetString(5) );
+                apuestas = new ApuestaDTO(res.GetString(0),res.GetString(1) , res.GetDouble(2) , res.GetDateTime(3),res.GetString(4) );
                 apuesta.Add(apuestas);
             }
-            database.disconnect();
+          //database.disconnect();
             return apuesta;
         }
 
@@ -87,7 +88,7 @@ namespace PlaceMyBetOficial.Models
 
             try
             {
-                database.connect();
+               // database.connect();
 
                 if (!CheckData(a))
                     return false;
@@ -102,7 +103,7 @@ namespace PlaceMyBetOficial.Models
             }
             catch (MySqlException e)
             {
-               database.disconnect();
+               //database.disconnect();
                return false;
 
             }
@@ -125,7 +126,7 @@ namespace PlaceMyBetOficial.Models
 
         public void aumentoDinero(Apuesta a)
         {
-            database.connect();
+            //database.connect();
            
             if (a.tipoApuesta == "over")
             {
@@ -136,7 +137,7 @@ namespace PlaceMyBetOficial.Models
                 MySqlDataReader res = database.query ("UPDATE mercados SET dinero_under= dinero_under +" + a.dinero + " WHERE over_under = " + a.tipoMercado + ";");
             }
 
-            database.disconnect();
+           // database.disconnect();
         }
 
         //NuevaCuota(tipo_mercado, over_under, dinero); 
@@ -151,7 +152,7 @@ namespace PlaceMyBetOficial.Models
 
             try
             {
-                database.connect();
+                //database.connect();
                 Apuesta a = null;
                 if (over_under == "over")
                 {
@@ -166,12 +167,12 @@ namespace PlaceMyBetOficial.Models
                 }
                
                 
-               database.disconnect();
+               //database.disconnect();
 
             }
             catch (MySqlException e)
             {
-                database.disconnect();
+               // database.disconnect();
             }
 
            
@@ -180,7 +181,7 @@ namespace PlaceMyBetOficial.Models
 
         public List<ResponseApuestasUsuario> getApuestaUsuario(string usuariosEmail,int mercadosIdMercado)
         {
-            database.connect();
+            //database.connect();
 
             Dictionary<string, string> dicParameters = new Dictionary<string, string>();
 
@@ -198,30 +199,31 @@ namespace PlaceMyBetOficial.Models
                 apuesta = new ResponseApuestasUsuario(res.GetInt32(0), res.GetString(1),res.GetDouble(2), res.GetDouble(3), res.GetDouble(4));
                 apuestas.Add(apuesta);
             }
-            database.disconnect();
+           // database.disconnect();
             return apuestas;
         }
 
-        public List<ResponseApuestasUsuario> getApuestaMercado(string usuariosEmail,double tipoMercado)
+        public List<ResponseApuestasMercado> getApuestaMercado(string usuariosEmail,double tipoMercado)
         {
-            database.connect();
+           // database.connect();
 
             Dictionary<string, string> dicParameters = new Dictionary<string, string>();
 
-            MySqlDataReader res = database.query_parameters("SELECT a.tipo_mercado,a.tipo_apuesta,a.dinero,m.cuota_under,m.cuota_over,a.Usuarios_email FROM apuestas a INNER JOIN mercados m ON a.Mercados_id_mercado=m.id_mercado WHERE tipo_mercado=@TM AND Usuarios_email=@UE;" , dicParameters);
             dicParameters.Add("@UE", usuariosEmail);
             dicParameters.Add("@TM", Convert.ToString(tipoMercado));
+            MySqlDataReader res = database.query_parameters("SELECT a.tipo_mercado,a.tipo_apuesta,a.dinero,m.cuota_under,m.cuota_over,a.Usuarios_email FROM apuestas a INNER JOIN mercados m ON a.Mercados_id_mercado=m.id_mercado WHERE tipo_mercado=@TM AND Usuarios_email=@UE;" , dicParameters);
 
-            ResponseApuestasUsuario apuesta = null;
-            List<ResponseApuestasUsuario> apuestas = new List<ResponseApuestasUsuario>();
+
+            ResponseApuestasMercado apuesta = null;
+            List<ResponseApuestasMercado> apuestas = new List<ResponseApuestasMercado>();
 
             while (res.Read())
             {
 
-                apuesta = new ResponseApuestasUsuario( res.GetInt32(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4));
+                apuesta = new ResponseApuestasMercado( res.GetString(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4), res.GetString(5));
                 apuestas.Add(apuesta);
             }
-            database.disconnect();
+            //database.disconnect();
             return apuestas;
         }
     }

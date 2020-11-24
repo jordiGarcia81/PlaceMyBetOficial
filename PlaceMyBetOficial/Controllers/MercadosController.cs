@@ -15,11 +15,11 @@ namespace PlaceMyBetOficial.Controllers
         [HttpGet]
         public List<Mercado> GetMercados()
         {
-
-            List<Mercado> listmercado = null;
+            MercadoRepository mercadoRepository = new MercadoRepository();
+            List<Mercado> listmercado = mercadoRepository.GetMercados();
             return listmercado;
         }
-        // /api/GetMercadosDTO?overUnder=1.5
+        // api/GetMercadosDTO?overUnder=1.5
         [Route("api/GetMercadosDTO")]
         [HttpPost]
         public List<Mercado> GetMercadosDTO(string overUnder)
@@ -28,7 +28,7 @@ namespace PlaceMyBetOficial.Controllers
             List<Mercado> listmercado = mercadoRepository.GetMercadosDTO(overUnder);
             return listmercado;
         }
-
+        // api/getMercadosEvent?idEvento=1&overUnder=1.5
         [Route("api/getMercadosEvent")]
         [HttpPost]
         public List<Mercado> getMercadosEvent(int idEvento, string overUnder)

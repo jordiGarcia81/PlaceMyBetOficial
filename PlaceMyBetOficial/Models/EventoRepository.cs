@@ -20,7 +20,7 @@ namespace PlaceMyBetOficial.Models
 
        internal List<Evento> GetEvento()
         {
-            database.connect();
+           // database.connect();
             MySqlDataReader res = database.query("SELECT * FROM eventos");
 
             Evento eventos = null;
@@ -31,13 +31,13 @@ namespace PlaceMyBetOficial.Models
                 eventos = new Evento(res.GetInt32(0), res.GetString(1), res.GetString(2),  res.GetDateTime(3));
                 evento.Add(eventos);
             }
-            database.disconnect();
+            //database.disconnect();
             return evento;
         }
 
          public List<EventoDTO> GetEventoDTO()
         {
-            database.connect();
+           // database.connect();
             MySqlDataReader res = database.query("SELECT visitante,local,fecha FROM eventos");
 
             EventoDTO eventos = null;
@@ -48,7 +48,7 @@ namespace PlaceMyBetOficial.Models
                 eventos = new EventoDTO(res.GetString(0), res.GetString(1), res.GetDateTime(2));
                 evento.Add(eventos);
             }
-            database.disconnect();
+            //database.disconnect();
             return evento;
         }
 

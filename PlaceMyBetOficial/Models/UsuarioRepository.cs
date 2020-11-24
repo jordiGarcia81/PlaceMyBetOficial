@@ -20,7 +20,7 @@ namespace PlaceMyBetOficial.Models
         public List<Usuario> GetUsuarios()
         {
 
-            database.connect();
+           // database.connect();
             MySqlDataReader res = database.query("SELECT * FROM usuarios");
 
             Usuario usuario = null;
@@ -31,7 +31,7 @@ namespace PlaceMyBetOficial.Models
                 usuario = new Usuario( res.GetString(0), res.GetString(1), res.GetString(2), res.GetInt32(3) );
                 usuarios.Add(usuario);
             }
-            database.disconnect();
+           // database.disconnect();
             return usuarios;
         }
 
