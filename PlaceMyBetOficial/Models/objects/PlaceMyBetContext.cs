@@ -20,9 +20,13 @@ namespace PlaceMyBetOficial.Models.objects
         { 
 
         }
-        protected void onConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-                optionsBuilder.UseMySql("server=127.0.0.1;port=3306;database=placemybet2;uid=root;pwd ='';SslMode=none;");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql("Server=localhost;Database=PlaceMyBet2;Uid=root;Pwd=''; SslMode = none");
+            }
+                
         }
     }
     

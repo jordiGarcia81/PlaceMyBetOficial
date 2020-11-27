@@ -10,24 +10,24 @@ using static PlaceMyBetOficial.Models.objects.Evento;
 
 namespace PlaceMyBetOficial.Controllers
 {
-    public class EventosController : ApiController
-    {
-        [Route("api/GetEvento")]
-        [HttpGet]
-        public List<Evento> GetEvento()
-        {
-            EventoRepository eventoRepository = new EventoRepository();
-            List<Evento> listEvento = eventoRepository.GetEvento();
-            return listEvento;
-        }
-        [Route("api/GetEventoDTO")]
-        [HttpPost]
-        public List<EventoDTO> GetEventoDTO()
-        {
-            EventoRepository eventoRepository = new EventoRepository();
-            List<EventoDTO> listEvento = eventoRepository.GetEventoDTO();
-            return listEvento;
-        }
+    //public class EventosController : ApiController
+    //{
+    //    [Route("api/GetEvento")]
+    //    [HttpGet]
+    //    public List<Evento> GetEvento()
+    //    {
+    //        EventoRepository eventoRepository = new EventoRepository();
+    //        List<Evento> listEvento = eventoRepository.GetEvento();
+    //        return listEvento;
+    //    }
+    //    //[Route("api/GetEventoDTO")]
+    //    //[HttpPost]
+    //    //public List<EventoDTO> GetEventoDTO()
+    //    //{
+    //    //    EventoRepository eventoRepository = new EventoRepository();
+    //    //    List<EventoDTO> listEvento = eventoRepository.GetEventoDTO();
+    //    //    return listEvento;
+    //    //}
         
-    }
+    //}
 }
