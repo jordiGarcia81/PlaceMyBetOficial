@@ -21,7 +21,7 @@ namespace PlaceMyBetOficial.Models.objects
         {
         }
 
-        public Apuesta(int ApuestaId, string tipoApuesta, string tipoMercado, int cuota, int dinero, DateTime fecha, int mercadosIdMercado, string usuariosEmail)
+        public Apuesta(int ApuestaId, string tipoApuesta, string tipoMercado, int dinero, DateTime fecha, int mercadosIdMercado, string usuariosEmail)
         {
             this.ApuestaId = ApuestaId;
             this.tipoApuesta = tipoApuesta;

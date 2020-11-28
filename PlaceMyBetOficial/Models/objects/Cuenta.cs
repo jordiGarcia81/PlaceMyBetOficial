@@ -19,7 +19,7 @@ namespace PlaceMyBetOficial.Models.objects
 
         }
 
-        public Cuenta(int cuentaId, string nombreBanco, int saldo, string usuarioId)
+        public Cuenta(long cuentaId, string nombreBanco, int saldo, string usuarioId)
         {
             this.cuentaId = cuentaId;
             this.nombreBanco = nombreBanco;
