@@ -92,7 +92,7 @@ namespace PlaceMyBetOficial.Models
                 if (!CheckData(a))
                     return false;
 
-                MySqlDataReader res = database.query("INSERT INTO apuestas (tipo_apuesta,tipo_mercado,dinero,fecha,Mercados_id_mercado,Usuarios_email) values ('" + a.tipoApuesta + "','" + a.tipoMercado + "'," + a.dinero + ",'" + fecha + "'," + a.mercadosIdMercado + ",'" + a.usuariosEmail + "');");
+                MySqlDataReader res = database.query("INSERT INTO apuestas (tipo_apuesta,tipo_mercado,dinero,fecha,Mercados_id_mercado,Usuarios_email) values ('" + a.tipoApuesta + "','" + a.tipoMercado + "'," + a.dinero + ",'" + fecha + "','" + a.usuariosEmail + "');");
 
                 database.disconnect();
 

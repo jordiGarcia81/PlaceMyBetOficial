@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.EntityFrameworkCore.Design.3.1.9\build\net461\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('..\packages\Microsoft.EntityFrameworkCore.Design.3.1.9\build\net461\Microsoft.EntityFrameworkCore.Design.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -68,17 +67,8 @@
       <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.9.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.9\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.9.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.9\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Design, Version=3.1.9.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Design.3.1.9\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.9.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.3.1.9\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.9.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.9\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
@@ -115,12 +105,6 @@
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.22\lib\net452\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="MySqlConnector, Version=0.69.9.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySqlConnector.0.69.9\lib\net471\MySqlConnector.dll</HintPath>
-    </Reference>
-    <Reference Include="Pomelo.EntityFrameworkCore.MySql, Version=3.2.3.0, Culture=neutral, PublicKeyToken=2cc498582444921b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Pomelo.EntityFrameworkCore.MySql.3.2.3\lib\netstandard2.0\Pomelo.EntityFrameworkCore.MySql.dll</HintPath>
     </Reference>
     <Reference Include="Pomelo.JsonObject, Version=2.2.1.0, Culture=neutral, PublicKeyToken=2cc498582444921b, processorArchitecture=MSIL">
       <HintPath>..\packages\Pomelo.JsonObject.2.2.1\lib\netstandard2.0\Pomelo.JsonObject.dll</HintPath>
@@ -348,7 +332,6 @@
     <Compile Include="Models\MercadoRepository.cs" />
     <Compile Include="Models\objects\Apuesta.cs" />
     <Compile Include="Models\objects\Cuenta.cs" />
-    <Compile Include="Models\objects\DataContext.cs" />
     <Compile Include="Models\objects\Evento.cs" />
     <Compile Include="Models\objects\Mercado.cs" />
     <Compile Include="Models\objects\ResponseData.cs" />
@@ -480,7 +463,6 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.EntityFrameworkCore.Design.3.1.9\build\net461\Microsoft.EntityFrameworkCore.Design.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.EntityFrameworkCore.Design.3.1.9\build\net461\Microsoft.EntityFrameworkCore.Design.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

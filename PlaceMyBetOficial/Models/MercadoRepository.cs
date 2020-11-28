@@ -16,7 +16,25 @@ namespace PlaceMyBetOficial.Models
         {
             database = new DataBase();
         }
+        public List<Mercado> GetMercados()
+        {
 
+            database.connect();
+            MySqlDataReader res = database.query("SELECT * FROM mercados");
+
+            Mercado mercado = null;
+            List<Mercado> mercados = new List<Mercado>();
+
+            while (res.Read())
+            {
+
+                mercado = new Mercado(res.GetInt32(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4), res.GetDouble(5), res.GetInt32(6));
+                mercados.Add(mercado);
+            }
+            database.disconnect();
+            return mercados;
+
+        }
         public List<Mercado> GetMercadosDTO(string overUnder)
         {
           

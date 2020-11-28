@@ -15,8 +15,8 @@ namespace PlaceMyBetOficial.Controllers
         [HttpGet]
         public List<Mercado> GetMercados()
         {
-
-            List<Mercado> listmercado = null;
+            MercadoRepository mercadoRepository = new MercadoRepository();
+            List<Mercado> listmercado = mercadoRepository.GetMercados();
             return listmercado;
         }
         // /api/GetMercadosDTO?overUnder=1.5
