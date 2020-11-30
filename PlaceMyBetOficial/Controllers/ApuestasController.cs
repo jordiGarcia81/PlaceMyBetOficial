@@ -13,8 +13,17 @@ namespace PlaceMyBetOficial.Controllers
 {
     public class ApuestasController : ApiController
     {
+        [Route("api/GetApuestas")]
+        [HttpGet]
+        public List<Apuesta> GetApuestas()
+        {
+            ApuestaRepository apuestaRepository = new ApuestaRepository();
+            List<Apuesta> listapuestas = apuestaRepository.GetApuestas();
+            return listapuestas;
+        }
         //[Authorize]
         [Route("api/GetApuestaDTO")]
+        [HttpPost]
         public List<ApuestaDTO> GetApuestaDTO()
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
@@ -42,10 +51,10 @@ namespace PlaceMyBetOficial.Controllers
 
         [Route("api/getApuestaMercado")]
         [HttpPost]
-        public List<ResponseApuestasUsuario> getApuestaMercado(string usuariosEmail, double tipoMercado)
+        public List<ResponseApuestasMercado> getApuestaMercado(string usuariosEmail, double tipoMercado)
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
-            List<ResponseApuestasUsuario> apuestas = apuestaRepository.getApuestaMercado(usuariosEmail, tipoMercado);
+            List<ResponseApuestasMercado> apuestas = apuestaRepository.getApuestaMercado(usuariosEmail, tipoMercado);
             return apuestas;
         }
     }

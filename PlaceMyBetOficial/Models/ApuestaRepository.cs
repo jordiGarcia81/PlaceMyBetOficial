@@ -1,5 +1,6 @@
 ﻿using Antlr.Runtime.Tree;
 using MySql.Data.MySqlClient;
+using PlaceMyBetOficial.Controllers;
 using PlaceMyBetOficial.Models.objects;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace PlaceMyBetOficial.Models
 
             while (res.Read())
             {
-                apuestas = new Apuesta(res.GetInt32(0),res.GetString(1), res.GetString(2), res.GetDouble(3), res.GetDouble(4),res.GetDateTime(5), res.GetInt32(6), res.GetString(7));
+                apuestas = new Apuesta(res.GetInt32(0),res.GetString(1), res.GetString(2), res.GetDouble(3),res.GetDateTime(4), res.GetInt32(5), res.GetString(6));
                 apuesta.Add(apuestas);
             }
             database.disconnect();
@@ -49,14 +50,14 @@ namespace PlaceMyBetOficial.Models
         internal List<ApuestaDTO> GetApuestaDTO()
         {
             database.connect();
-            MySqlDataReader res = database.query("SELECT tipo_apuesta,tipo_mercado,cuota,dinero,fecha,Usuarios_email FROM apuestas");
+            MySqlDataReader res = database.query("SELECT tipo_apuesta,tipo_mercado,dinero,fecha,Usuarios_email FROM apuestas");
 
             ApuestaDTO apuestas = null;
             List<ApuestaDTO> apuesta = new List<ApuestaDTO>();
 
             while (res.Read())
             {
-                apuestas = new ApuestaDTO(res.GetString(0),res.GetDouble(1) , res.GetDouble(2) , res.GetDouble(3) , res.GetDateTime(4),res.GetString(5) );
+                apuestas = new ApuestaDTO(res.GetString(0),res.GetString(1) , res.GetDouble(2) ,  res.GetDateTime(3),res.GetString(4) );
                 apuesta.Add(apuestas);
             }
             database.disconnect();
@@ -202,23 +203,23 @@ namespace PlaceMyBetOficial.Models
             return apuestas;
         }
 
-        public List<ResponseApuestasUsuario> getApuestaMercado(string usuariosEmail,double tipoMercado)
+        public List<ResponseApuestasMercado> getApuestaMercado(string usuariosEmail,double tipoMercado)
         {
             database.connect();
 
             Dictionary<string, string> dicParameters = new Dictionary<string, string>();
-
-            MySqlDataReader res = database.query_parameters("SELECT a.tipo_mercado,a.tipo_apuesta,a.dinero,m.cuota_under,m.cuota_over,a.Usuarios_email FROM apuestas a INNER JOIN mercados m ON a.Mercados_id_mercado=m.id_mercado WHERE tipo_mercado=@TM AND Usuarios_email=@UE;" , dicParameters);
             dicParameters.Add("@UE", usuariosEmail);
             dicParameters.Add("@TM", Convert.ToString(tipoMercado));
+            MySqlDataReader res = database.query_parameters("SELECT a.tipo_mercado,a.tipo_apuesta,a.dinero,m.cuota_under,m.cuota_over,a.Usuarios_email FROM apuestas a INNER JOIN mercados m ON a.Mercados_id_mercado=m.id_mercado WHERE tipo_mercado=@TM AND Usuarios_email=@UE;" , dicParameters);
 
-            ResponseApuestasUsuario apuesta = null;
-            List<ResponseApuestasUsuario> apuestas = new List<ResponseApuestasUsuario>();
+
+            ResponseApuestasMercado apuesta = null;
+            List<ResponseApuestasMercado> apuestas = new List<ResponseApuestasMercado>();
 
             while (res.Read())
             {
 
-                apuesta = new ResponseApuestasUsuario( res.GetInt32(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4));
+                apuesta = new ResponseApuestasMercado( res.GetString(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4), res.GetString(5));
                 apuestas.Add(apuesta);
             }
             database.disconnect();

@@ -18,6 +18,8 @@ namespace PlaceMyBetOficial.Models.objects
             public double cuotaUnder { get; set; }
 
             public double dinero { get; set; }
+            public string tipoMercado { get; set; }
+            public string email { get; set; }
 
 
             public ResponseApuestasUsuario(int idEvento, string tipoApuesta, double cuotaOver, double cuotaUnder, double dinero)
@@ -32,14 +34,15 @@ namespace PlaceMyBetOficial.Models.objects
             
           
 
-            public ResponseApuestasUsuario( string tipoApuesta, double cuotaOver, double cuotaUnder, double dinero)
-            {
-              
-                this.tipoApuesta = tipoApuesta;
-                this.cuotaOver = cuotaOver;
-                this.cuotaUnder = cuotaUnder;
-                this.dinero = dinero;
-            }
+            //public ResponseApuestasMercado( string tipoMercado,string tipoApuesta, double cuotaOver, double cuotaUnder, double dinero,string email)
+            //{
+            //    this.tipoMercado = tipoMercado;
+            //    this.tipoApuesta = tipoApuesta;
+            //    this.cuotaOver = cuotaOver;
+            //    this.cuotaUnder = cuotaUnder;
+            //    this.dinero = dinero;
+            //    this.email = email;
+            //}
 
         }
     }
