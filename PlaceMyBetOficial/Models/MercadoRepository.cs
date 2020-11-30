@@ -8,36 +8,56 @@ using System.Web;
 
 namespace PlaceMyBetOficial.Models
 {
-    //public class MercadoRepository
-    //{
+    public class MercadoRepository
+    {
     //    DataBase database = null;
 
     //    public MercadoRepository()
     //    {
     //        database = new DataBase();
     //    }
-    //    public List<Mercado> GetMercados()
-    //    {
+    public List<Mercado> GetMercados()
+    {
 
-    //       // database.connect();
-    //        MySqlDataReader res = database.query("SELECT * FROM mercados ");
+        // database.connect();
+        //MySqlDataReader res = database.query("SELECT * FROM mercados ");
 
-    //        Mercado mercado = null;
-    //        List<Mercado> mercados = new List<Mercado>();
+        //Mercado mercado = null;
+        List<Mercado> mercados = new List<Mercado>();
+        using (PlaceMyBetContext context = new PlaceMyBetContext())
+        {
+            mercados = context.Mercados.ToList();
+        }
 
-    //        while (res.Read())
-    //        {
 
-    //            mercado = new Mercado(res.GetInt32(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4), res.GetDouble(5), res.GetInt32(6));
-    //            mercados.Add(mercado);
-    //        }
-    //        //database.disconnect();
-    //        return mercados;
+        //while (res.Read())
+        //{
 
-    //    }
+        //    mercado = new Mercado(res.GetInt32(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4), res.GetDouble(5), res.GetInt32(6));
+        //    mercados.Add(mercado);
+        //}
+        //database.disconnect();
+        return mercados;
+
+    }
+
+    internal Mercado GetMercado(int id)
+    {
+        Mercado mercado;
+
+        using (PlaceMyBetContext context = new PlaceMyBetContext())
+        {
+            mercado = context.Mercados
+                .Where(s => s.MercadoId == id)
+                .FirstOrDefault();
+        }
+
+
+        return mercado;
+    }
     //    public List<Mercado> GetMercadosDTO(string overUnder)
     //    {
-          
+
     //        //database.connect();
     //        MySqlDataReader res = database.query("SELECT * FROM mercados WHERE over_under='"+ overUnder+"'");
 
@@ -46,7 +66,7 @@ namespace PlaceMyBetOficial.Models
 
     //        while (res.Read())
     //        {
-               
+
     //            mercado = new Mercado(res.GetInt32(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4), res.GetDouble(5), res.GetInt32(6));
     //            mercados.Add(mercado);
     //        }
@@ -82,5 +102,5 @@ namespace PlaceMyBetOficial.Models
 
 
 
-    //}
+    }
 }

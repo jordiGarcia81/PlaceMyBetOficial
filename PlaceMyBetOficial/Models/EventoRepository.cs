@@ -9,8 +9,8 @@ using static PlaceMyBetOficial.Models.objects.Evento;
 
 namespace PlaceMyBetOficial.Models
 {
-    //public class EventoRepository
-    //{
+    public class EventoRepository
+    {
     //DataBase database = null;
 
     // public EventoRepository()
@@ -37,25 +37,33 @@ namespace PlaceMyBetOficial.Models
         //database.disconnect();
         return eventos;
     }
+        internal void Save(Evento evento)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
 
-    // public List<EventoDTO> GetEventoDTO()
-    //{
-    //   // database.connect();
-    //    MySqlDataReader res = database.query("SELECT visitante,local,fecha FROM eventos");
+            context.Eventos.Add(evento);
+            context.SaveChanges();
 
-    //    EventoDTO eventos = null;
-    //    List<EventoDTO> evento = new List<EventoDTO>();
+        }
 
-    //    while (res.Read())
-    //    {
-    //        eventos = new EventoDTO(res.GetString(0), res.GetString(1), res.GetDateTime(2));
-    //        evento.Add(eventos);
-    //    }
-    //    //database.disconnect();
-    //    return evento;
-    //}
+        // public List<EventoDTO> GetEventoDTO()
+        //{
+        //   // database.connect();
+        //    MySqlDataReader res = database.query("SELECT visitante,local,fecha FROM eventos");
+
+        //    EventoDTO eventos = null;
+        //    List<EventoDTO> evento = new List<EventoDTO>();
+
+        //    while (res.Read())
+        //    {
+        //        eventos = new EventoDTO(res.GetString(0), res.GetString(1), res.GetDateTime(2));
+        //        evento.Add(eventos);
+        //    }
+        //    //database.disconnect();
+        //    return evento;
+        //}
 
 
 
-    //}
+    }
 }
