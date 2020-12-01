@@ -14,9 +14,9 @@ namespace PlaceMyBetOficial.Controllers
     public class ApuestasController : ApiController
     {
 
-        [Route("api/GetApuestas")]
-        [HttpGet]
-        public List<Apuesta> GetApuestas()
+        //[Route("api/GetApuestas")]
+        //[HttpGet]
+        public List<Apuesta> Get()
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
             List<Apuesta> listApuesta = apuestaRepository.GetApuestas();

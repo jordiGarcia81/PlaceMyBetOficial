@@ -7,19 +7,19 @@ namespace PlaceMyBetOficial.Models.objects
 {
     public class Usuario
     {
-        public string usuarioId { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public int edad { get; set; }
-        public List<Apuesta> apuestas { get; set; }
+        public string UsuarioId { get; set; }
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
+        public int Edad { get; set; }
+        public List<Apuesta> Apuestas { get; set; }
         public Cuenta Cuenta { get; set; }
 
         public Usuario(string usuarioId, string nombre, string apellidos, int edad)
         {
-            this.usuarioId = usuarioId;
-            this.nombre = nombre;
-            this.apellidos = apellidos;
-            this.edad = edad;
+            this.UsuarioId = usuarioId;
+            this.Nombre = nombre;
+            this.Apellidos = apellidos;
+            this.Edad = edad;
         }
 
     }

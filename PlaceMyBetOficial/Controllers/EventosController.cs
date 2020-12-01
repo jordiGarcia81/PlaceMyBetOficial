@@ -12,9 +12,9 @@ namespace PlaceMyBetOficial.Controllers
 {
     public class EventosController : ApiController
     {
-        [Route("api/GetEvento")]
-        [HttpGet]
-        public List<Evento> GetEvento()
+        //[Route("api/GetEvento")]
+        //[HttpGet]
+        public List<Evento> Get()
         {
             EventoRepository eventoRepository = new EventoRepository();
             List<Evento> listEvento = eventoRepository.GetEvento();

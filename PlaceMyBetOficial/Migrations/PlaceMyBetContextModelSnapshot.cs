@@ -23,29 +23,29 @@ namespace PlaceMyBetOficial.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("dinero")
+                    b.Property<int>("Dinero")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("fecha")
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("mercadoId")
+                    b.Property<int>("MercadoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("tipoApuesta")
+                    b.Property<string>("TipoApuesta")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("tipoMercado")
+                    b.Property<string>("TipoMercado")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("usuarioId")
+                    b.Property<string>("UsuarioId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("ApuestaId");
 
-                    b.HasIndex("mercadoId");
+                    b.HasIndex("MercadoId");
 
-                    b.HasIndex("usuarioId");
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Apuestas");
 
@@ -53,32 +53,33 @@ namespace PlaceMyBetOficial.Migrations
                         new
                         {
                             ApuestaId = 1,
-                            dinero = 50,
-                            fecha = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            mercadoId = 0,
-                            tipoApuesta = "under",
-                            tipoMercado = "1.5"
+                            Dinero = 50,
+                            Fecha = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MercadoId = 1,
+                            TipoApuesta = "under",
+                            TipoMercado = "1.5",
+                            UsuarioId = "jordigarcia@gmail.com"
                         });
                 });
 
             modelBuilder.Entity("PlaceMyBetOficial.Models.objects.Cuenta", b =>
                 {
-                    b.Property<long>("cuentaId")
+                    b.Property<long>("CuentaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("nombreBanco")
+                    b.Property<string>("NombreBanco")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("saldo")
+                    b.Property<int>("Saldo")
                         .HasColumnType("int");
 
-                    b.Property<string>("usuarioId")
+                    b.Property<string>("UsuarioId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.HasKey("cuentaId");
+                    b.HasKey("CuentaId");
 
-                    b.HasIndex("usuarioId")
+                    b.HasIndex("UsuarioId")
                         .IsUnique();
 
                     b.ToTable("Cuentas");
@@ -86,32 +87,32 @@ namespace PlaceMyBetOficial.Migrations
                     b.HasData(
                         new
                         {
-                            cuentaId = 1234567876543212L,
-                            nombreBanco = "bankia",
-                            saldo = 100,
-                            usuarioId = "jordigarcia@gmail.com"
+                            CuentaId = 1234567876543212L,
+                            NombreBanco = "bankia",
+                            Saldo = 100,
+                            UsuarioId = "jordigarcia@gmail.com"
                         });
                 });
 
             modelBuilder.Entity("PlaceMyBetOficial.Models.objects.Evento", b =>
                 {
-                    b.Property<int>("eventoId")
+                    b.Property<int>("EventoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Local")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int?>("MercadoId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("fecha")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("local")
+                    b.Property<string>("Visitante")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("visitante")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("eventoId");
+                    b.HasKey("EventoId");
 
                     b.HasIndex("MercadoId");
 
@@ -120,10 +121,10 @@ namespace PlaceMyBetOficial.Migrations
                     b.HasData(
                         new
                         {
-                            eventoId = 1,
-                            fecha = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            local = "madrid",
-                            visitante = "valencia"
+                            EventoId = 1,
+                            Fecha = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Local = "madrid",
+                            Visitante = "valencia"
                         });
                 });
 
@@ -133,22 +134,22 @@ namespace PlaceMyBetOficial.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<double>("cuotaOver")
+                    b.Property<double>("CuotaOver")
                         .HasColumnType("double");
 
-                    b.Property<double>("cuotaUnder")
+                    b.Property<double>("CuotaUnder")
                         .HasColumnType("double");
 
-                    b.Property<double>("dineroOver")
+                    b.Property<double>("DineroOver")
                         .HasColumnType("double");
 
-                    b.Property<double>("dineroUnder")
+                    b.Property<double>("DineroUnder")
                         .HasColumnType("double");
 
-                    b.Property<int>("eventoId")
+                    b.Property<int>("EventoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("overUnder")
+                    b.Property<string>("OverUnder")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("MercadoId");
@@ -159,67 +160,67 @@ namespace PlaceMyBetOficial.Migrations
                         new
                         {
                             MercadoId = 1,
-                            cuotaOver = 3.7999999999999998,
-                            cuotaUnder = 1.45,
-                            dineroOver = 950.0,
-                            dineroUnder = 300.0,
-                            eventoId = 1,
-                            overUnder = "1.5"
+                            CuotaOver = 3.7999999999999998,
+                            CuotaUnder = 1.45,
+                            DineroOver = 950.0,
+                            DineroUnder = 300.0,
+                            EventoId = 1,
+                            OverUnder = "1.5"
                         });
                 });
 
             modelBuilder.Entity("PlaceMyBetOficial.Models.objects.Usuario", b =>
                 {
-                    b.Property<string>("usuarioId")
+                    b.Property<string>("UsuarioId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<string>("apellidos")
+                    b.Property<string>("Apellidos")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("edad")
+                    b.Property<int>("Edad")
                         .HasColumnType("int");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("usuarioId");
+                    b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
 
                     b.HasData(
                         new
                         {
-                            usuarioId = "jordigarcia@gmail.com",
-                            apellidos = "Garcia Ibor",
-                            edad = 39,
-                            nombre = "jordi"
+                            UsuarioId = "jordigarcia@gmail.com",
+                            Apellidos = "Garcia Ibor",
+                            Edad = 39,
+                            Nombre = "jordi"
                         });
                 });
 
             modelBuilder.Entity("PlaceMyBetOficial.Models.objects.Apuesta", b =>
                 {
                     b.HasOne("PlaceMyBetOficial.Models.objects.Mercado", "Mercado")
-                        .WithMany("apuestas")
-                        .HasForeignKey("mercadoId")
+                        .WithMany("Apuestas")
+                        .HasForeignKey("MercadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("PlaceMyBetOficial.Models.objects.Usuario", "Usuario")
-                        .WithMany("apuestas")
-                        .HasForeignKey("usuarioId");
+                        .WithMany("Apuestas")
+                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("PlaceMyBetOficial.Models.objects.Cuenta", b =>
                 {
                     b.HasOne("PlaceMyBetOficial.Models.objects.Usuario", "Usuario")
                         .WithOne("Cuenta")
-                        .HasForeignKey("PlaceMyBetOficial.Models.objects.Cuenta", "usuarioId");
+                        .HasForeignKey("PlaceMyBetOficial.Models.objects.Cuenta", "UsuarioId");
                 });
 
             modelBuilder.Entity("PlaceMyBetOficial.Models.objects.Evento", b =>
                 {
                     b.HasOne("PlaceMyBetOficial.Models.objects.Mercado", "Mercado")
-                        .WithMany("eventos")
+                        .WithMany("Eventos")
                         .HasForeignKey("MercadoId");
                 });
 #pragma warning restore 612, 618

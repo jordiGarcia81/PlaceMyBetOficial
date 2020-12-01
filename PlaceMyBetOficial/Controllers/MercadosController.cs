@@ -12,9 +12,9 @@ namespace PlaceMyBetOficial.Controllers
     public class MercadosController : ApiController
     {
 
-        [Route("api/GetMercados")]
-        [HttpGet]
-        public List<Mercado> GetMercados()
+        //[Route("api/GetMercados")]
+        //[HttpGet]
+        public List<Mercado> Get()
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
             List<Mercado> listmercado = mercadoRepository.GetMercados();

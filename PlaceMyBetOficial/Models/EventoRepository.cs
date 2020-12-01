@@ -27,6 +27,7 @@ namespace PlaceMyBetOficial.Models
         using (PlaceMyBetContext context = new PlaceMyBetContext())
         {
             eventos = context.Eventos.ToList();
+                Debug.WriteLine("eventos" + eventos.Count);
         }
 
         //while (res.Read())
