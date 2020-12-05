@@ -67,21 +67,59 @@ namespace PlaceMyBetOficial.Models
             return apuesta;
         }
 
-        //    public bool CheckData( Apuesta a)
-        //    {
+        public bool CheckApuestas(Apuesta a)
+        {
 
-        //        //Nombre comprobar si esta en BBDD
-        //        switch (a.tipoMercado)
-        //        {
-        //            case "1.5":
-        //            case "2.5":
-        //            case "3.5":
-        //                if ((a.tipoApuesta == "over" || a.tipoApuesta == "under") && a.dinero > 0) return true;
-        //                else return false;
-        //            default:
-        //                return false;
-        //        }
-        //    }
+            return true;
+        }
+        public bool Insertar (Apuesta apuesta)
+        {
+            PlaceMyBetContext db = new PlaceMyBetContext();
+            if (!CheckApuestas(apuesta))
+            {
+                return false;
+            }
+            db.Apuestas.Intersect((IEnumerable<Apuesta>)apuesta);
+
+            MercadoRepository mercadoRepository = new MercadoRepository();
+            Mercado mercado = mercadoRepository.GetMercadoTipo(apuesta.TipoMercado);
+            double cuota_over;
+            double cuota_under;
+
+            try
+            {
+                Apuesta a = null;
+                if (apuesta.TipoApuesta == "over")
+                {
+                    cuota_over = calcularCuotaOver(mercado, apuesta.Dinero);
+                    //SAveChange
+                }
+                else
+                {
+                    cuota_under = calcularCuotaUnder(mercado, apuesta.Dinero);
+                    //
+                }
+
+
+            }
+            catch () { }
+
+
+            return true;
+        }
+        public double calcularCuotaOver(Mercado m, double dinero)
+        {
+            double probabilidadOver = dinero / (dinero + m.DineroUnder);
+            double cuotaOver = (1 / probabilidadOver) * 0.95;
+            return cuotaOver;
+        }
+
+        public double calcularCuotaUnder(Mercado m, double dinero)
+        {
+            double probabilidadUnder = dinero / (m.DineroOver + dinero);
+            double cuotaUnder = (1 / probabilidadUnder) * 0.95;
+            return cuotaUnder;
+        }
         //    public bool Insertar(Apuesta a)
         //    {
 
@@ -113,19 +151,7 @@ namespace PlaceMyBetOficial.Models
         //        return true;
         //    }
 
-        //    public double calcularCuotaOver(Mercado m, double dinero)
-        //    {
-        //        double probabilidadOver = dinero / (dinero + m.dineroUnder);
-        //        double cuotaOver = (1 / probabilidadOver) * 0.95;
-        //        return cuotaOver;
-        //    }
 
-        //    public double calcularCuotaUnder(Mercado m, double dinero)
-        //    {
-        //        double probabilidadUnder = dinero / (m.dineroOver + dinero);
-        //        double cuotaUnder = (1 / probabilidadUnder) * 0.95;
-        //        return cuotaUnder;
-        //    }
 
         //    public void aumentoDinero(Apuesta a)
         //    {

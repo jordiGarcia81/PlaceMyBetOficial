@@ -31,15 +31,15 @@ namespace PlaceMyBetOficial.Controllers
             return apuesta;
         }
 
-        //    [HttpPut]
-        //    [Route("api/InsertarApuestas")]
-        //    public bool InsertarApuestas(Apuesta apuesta)
-        //    {
-        //        ApuestaRepository apuestaRepository = new ApuestaRepository();
-        //        if (!apuestaRepository.Insertar(apuesta)) return false;
+        [HttpPut]
+        [Route("api/InsertarApuestas")]
+        public bool InsertarApuestas(Apuesta apuesta)
+        {
+            ApuestaRepository apuestaRepository = new ApuestaRepository();
+            if (!apuestaRepository.Insertar(apuesta)) return false;
 
-        //        return true;
-        //    }
+            return true;
+        }
         //    // api/getApuestaUsuario?usuariosEmail=jordigarcia%40gmail.com&mercadosIdMercado=1
         //    [HttpPost]
         //    [Route("api/getApuestaUsuario")]

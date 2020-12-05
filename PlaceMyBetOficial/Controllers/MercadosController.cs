@@ -30,11 +30,11 @@ namespace PlaceMyBetOficial.Controllers
             return mercado;
         }
         [HttpPut]
-        public Mercado insert()
+        public bool insert(Mercado mercado)
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
-            Mercado mercado = mercadoRepository.insert();
-            return mercado;
+            bool result = mercadoRepository.insert(mercado);
+            return result;
         }
         
 

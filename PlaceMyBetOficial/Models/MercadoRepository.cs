@@ -43,7 +43,7 @@ namespace PlaceMyBetOficial.Models
 
         }
 
-        internal Mercado GetMercado(int id)
+        internal Mercado GetMercadoId(int id)
         {
             Mercado mercado;
 
@@ -57,26 +57,40 @@ namespace PlaceMyBetOficial.Models
 
             return mercado;
         }
-        private void Insert()
+        internal Mercado GetMercadoTipo(string tipoMercado)
+        {
+            Mercado mercado;
+
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                mercado = context.Mercados
+                    .Where(s => s.OverUnder == tipoMercado)
+                    .FirstOrDefault();
+            }
+
+
+            return mercado;
+        }
+        public bool insert(Mercado mercado)
         {
             PlaceMyBetContext db = new PlaceMyBetContext();
 
+            if (!checkMercado(mercado)) {
+                return false;
+            }
 
-
-            Mercado mercado = new Mercado();
-            mercado.OverUnder = "1.5";
-            mercado.CuotaOver = 2.3;
-            mercado.CuotaUnder = 1.5;
-            mercado.DineroOver = 160;
-            mercado.DineroUnder = 200;
-            mercado.EventoId = 2;
 
             db.Mercados.Intersect((IEnumerable<Mercado>)mercado);
 
-
-
+            return true;
         }
 
+        private bool checkMercado(Mercado mercado)
+        {
+
+
+            return true;
+        }
         //public void create(Mercado mercado)
         //    {
         //        using (PlaceMyBetContext context = new PlaceMyBetContext())
