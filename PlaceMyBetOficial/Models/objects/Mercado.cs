@@ -31,7 +31,6 @@ namespace PlaceMyBetOficial.Models.objects
             this.DineroUnder = dineroUnder;
             this.EventoId = eventoId;
         }
-
-        
     }
+      
 }

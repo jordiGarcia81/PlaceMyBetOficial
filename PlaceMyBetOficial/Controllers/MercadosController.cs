@@ -11,6 +11,7 @@ namespace PlaceMyBetOficial.Controllers
 {
     public class MercadosController : ApiController
     {
+        private PlaceMyBetContext db = new PlaceMyBetContext();
 
         //[Route("api/GetMercados")]
         //[HttpGet]
@@ -28,6 +29,15 @@ namespace PlaceMyBetOficial.Controllers
             Mercado mercado = mercadoRepository.GetMercado(id);
             return mercado;
         }
+        [HttpPut]
+        public Mercado insert()
+        {
+            MercadoRepository mercadoRepository = new MercadoRepository();
+            Mercado mercado = mercadoRepository.insert();
+            return mercado;
+        }
+        
+
         //    // api/getMercadosEvent?idEvento=1&overUnder=1.5
         //    [Route("api/getMercadosEvent")]
         //    [HttpPost]
@@ -37,6 +47,8 @@ namespace PlaceMyBetOficial.Controllers
         //        List<Mercado> mercados = mercadoRepository.getMercadosEvent(idEvento,overUnder);
         //        return mercados;
         //    }
+
+
 
     }
 }
