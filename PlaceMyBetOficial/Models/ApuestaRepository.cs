@@ -92,12 +92,14 @@ namespace PlaceMyBetOficial.Models
                 if (apuesta.TipoApuesta == "over")
                 {
                     cuota_over = calcularCuotaOver(mercado, apuesta.Dinero);
-                    //SAveChange
+
+                    //SaveChange mercado
                 }
                 else
                 {
                     cuota_under = calcularCuotaUnder(mercado, apuesta.Dinero);
-                    //
+
+                    //SaveChange mercado
                 }
 
 

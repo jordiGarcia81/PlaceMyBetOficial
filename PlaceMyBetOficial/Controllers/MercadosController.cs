@@ -26,7 +26,7 @@ namespace PlaceMyBetOficial.Controllers
         public Mercado GetMercado(int id)
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
-            Mercado mercado = mercadoRepository.GetMercado(id);
+            Mercado mercado = mercadoRepository.GetMercadoId(id);
             return mercado;
         }
         [HttpPut]
