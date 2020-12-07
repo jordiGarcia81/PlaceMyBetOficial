@@ -14,9 +14,7 @@ namespace PlaceMyBetOficial.Models.objects
         public DateTime Fecha { get; set; }
         public int MercadoId{ get; set; }
         public string UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
-        public Mercado Mercado { get; set; }
-
+        
         public Apuesta()
         {
         }
@@ -32,7 +30,6 @@ namespace PlaceMyBetOficial.Models.objects
             this.UsuarioId = usuarioId;
         }
 
-        
-       
+
     }
 }

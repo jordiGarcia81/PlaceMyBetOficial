@@ -14,8 +14,7 @@ namespace PlaceMyBetOficial.Models.objects
         public double DineroOver { get; set; }
         public double DineroUnder { get; set; }
         public int EventoId { get; set; }
-        public List<Apuesta> Apuestas { get; set; }
-        public List<Evento> Eventos { get; set; }
+        public Evento eventos { get; set; }
 
         public Mercado()
         {
@@ -32,5 +31,24 @@ namespace PlaceMyBetOficial.Models.objects
             this.EventoId = eventoId;
         }
     }
-      
+
+    public class MercadoDTO
+    {
+        public string OverUnder { get; set; }
+        public double CuotaOver { get; set; }
+        public double CuotaUnder { get; set; }
+ 
+
+        public MercadoDTO()
+        {
+        }
+
+        public MercadoDTO(string overUnder, double cuotaOver, double cuotaUnder)
+        {
+            this.OverUnder = overUnder;
+            this.CuotaOver = cuotaOver;
+            this.CuotaUnder = cuotaUnder;
+        }
+    }
+
 }

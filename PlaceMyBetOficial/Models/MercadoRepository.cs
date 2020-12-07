@@ -21,25 +21,34 @@ namespace PlaceMyBetOficial.Models
         public List<Mercado> GetMercados()
         {
 
-            // database.connect();
-            //MySqlDataReader res = database.query("SELECT * FROM mercados ");
-
-            //Mercado mercado = null;
             List<Mercado> mercados = new List<Mercado>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                mercados = context.Mercados.ToList();
+                mercados = context.Mercados.Include(p => p.eventos).ToList();
             }
 
 
-            //while (res.Read())
-            //{
-
-            //    mercado = new Mercado(res.GetInt32(0), res.GetString(1), res.GetDouble(2), res.GetDouble(3), res.GetDouble(4), res.GetDouble(5), res.GetInt32(6));
-            //    mercados.Add(mercado);
-            //}
-            //database.disconnect();
             return mercados;
+
+        }
+        public List<MercadoDTO> GetMercadosDTO()
+        {
+
+            List<Mercado> mercados = new List<Mercado>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                mercados = context.Mercados.Include(p => p.eventos).ToList();
+            }
+
+            List<MercadoDTO> mercadosDTO = new List<MercadoDTO>();
+
+            foreach(Mercado m in mercados)
+            {
+                MercadoDTO mercadoDto = new MercadoDTO(m.OverUnder,m.CuotaOver,m.CuotaUnder);
+                mercadosDTO.Add(mercadoDto);
+            }
+
+            return mercadosDTO;
 
         }
 
@@ -79,8 +88,8 @@ namespace PlaceMyBetOficial.Models
                 return false;
             }
 
-
-            db.Mercados.Intersect((IEnumerable<Mercado>)mercado);
+            db.Mercados.Add(mercado);
+            db.SaveChanges();
 
             return true;
         }
