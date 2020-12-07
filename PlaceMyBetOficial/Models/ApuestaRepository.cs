@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using PlaceMyBetOficial.Models.objects;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -69,9 +70,18 @@ namespace PlaceMyBetOficial.Models
 
         public bool CheckApuestas(Apuesta a)
         {
-
-            return true;
+            switch (a.TipoMercado)
+            {
+                case "1.5":
+                case "2.5":
+                case "3.5":
+                    if ((a.TipoApuesta == "over" || a.TipoApuesta == "under") ) return true;
+                    else return false;
+                default:
+                    return false;
+            }
         }
+    
         public bool Insertar (Apuesta apuesta)
         {
             PlaceMyBetContext db = new PlaceMyBetContext();
@@ -91,25 +101,28 @@ namespace PlaceMyBetOficial.Models
                 Apuesta a = null;
                 if (apuesta.TipoApuesta == "over")
                 {
-                    cuota_over = calcularCuotaOver(mercado, apuesta.Dinero);
+                    cuota_over = CalcularCuotaOver(mercado, apuesta.Dinero);
 
-                    //SaveChange mercado
+                    SaveChange();
                 }
                 else
                 {
                     cuota_under = calcularCuotaUnder(mercado, apuesta.Dinero);
 
-                    //SaveChange mercado
+                    SaveChange();
                 }
 
 
             }
-            catch () { }
+            catch (EntityException ex) { }
 
-
+           
             return true;
         }
-        public double calcularCuotaOver(Mercado m, double dinero)
+
+    
+
+        public double CalcularCuotaOver(Mercado m, double dinero)
         {
             double probabilidadOver = dinero / (dinero + m.DineroUnder);
             double cuotaOver = (1 / probabilidadOver) * 0.95;
@@ -121,6 +134,16 @@ namespace PlaceMyBetOficial.Models
             double probabilidadUnder = dinero / (m.DineroOver + dinero);
             double cuotaUnder = (1 / probabilidadUnder) * 0.95;
             return cuotaUnder;
+        }
+
+       internal static bool SaveChange()
+        {
+            List<Mercado> mercados = new List<Mercado>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                mercados = context.Mercados.ToList();
+            }
+            return true;
         }
         //    public bool Insertar(Apuesta a)
         //    {

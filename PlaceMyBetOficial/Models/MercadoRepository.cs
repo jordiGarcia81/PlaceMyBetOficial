@@ -87,9 +87,12 @@ namespace PlaceMyBetOficial.Models
 
         private bool checkMercado(Mercado mercado)
         {
+            if(mercado.OverUnder=="1.5"|| mercado.OverUnder == "2.5"||mercado.OverUnder == "3.5")
+            {
+                return true;
+            }
 
-
-            return true;
+            return false;
         }
         //public void create(Mercado mercado)
         //    {
