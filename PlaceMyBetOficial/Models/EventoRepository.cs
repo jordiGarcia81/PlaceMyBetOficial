@@ -26,25 +26,18 @@ namespace PlaceMyBetOficial.Models
         return eventos;
     }
 
-        public List<EventoDTO> ToDTO()
+        public EventoDTO ToDTO(Evento e)
         {
-            List<Evento> evento = new List<Evento>();
+           
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
                 List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
             }
 
-            List<EventoDTO> eventosDTO = new List<EventoDTO>();
+           
+            return  new EventoDTO(e.Local, e.Visitante);
 
-            foreach (Evento e in evento)
-            {
-                EventoDTO eventoDTO = new EventoDTO(e.Local, e.Visitante);
-                eventosDTO.Add(eventoDTO);
-            }
 
-            return eventosDTO;
-
-            
         }
         internal void Save(Evento evento)
         {

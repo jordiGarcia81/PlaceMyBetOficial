@@ -342,6 +342,7 @@
     <Compile Include="Models\EventoRepository.cs" />
     <Compile Include="Models\MercadoRepository.cs" />
     <Compile Include="Models\objects\Apuesta.cs" />
+    <Compile Include="Models\objects\ResponseApuesta.cs" />
     <Compile Include="Models\objects\Cuenta.cs" />
     <Compile Include="Models\objects\PlaceMyBetContext.cs" />
     <Compile Include="Models\objects\Evento.cs" />

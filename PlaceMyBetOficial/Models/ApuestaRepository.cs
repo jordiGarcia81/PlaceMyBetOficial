@@ -45,6 +45,24 @@ namespace PlaceMyBetOficial.Models
             return apuesta;
         }
 
+        public List<ApuestaDTO> GetApuestaDTO()
+        {
+            List<ResponseApuesta> ra = new List<ResponseApuesta>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                ra = context.ResponseApuestas.Include(p => p.mercados).ToList();
+            }
+
+            List<ApuestaDTO> apuestaDTO = new List<ApuestaDTO>();
+
+            foreach (ResponseApuesta r in ra)
+            {
+                ApuestaDTO apuestasDTO = new ApuestaDTO(r.UsuarioId,r.idEvento,r.TipoApuesta,r.cuotaOver,r.cuotaUnder,r.dinero,r.mercados);
+                apuestaDTO.Add(apuestasDTO);
+            }
+            return apuestaDTO;
+        }
+
         public bool CheckApuestas(Apuesta a)
         {
             switch (a.TipoMercado)
