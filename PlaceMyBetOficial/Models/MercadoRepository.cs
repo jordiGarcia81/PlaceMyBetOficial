@@ -12,12 +12,7 @@ namespace PlaceMyBetOficial.Models
 {
     public class MercadoRepository
     {
-        //    DataBase database = null;
-
-        //    public MercadoRepository()
-        //    {
-        //        database = new DataBase();
-        //    }
+       
         public List<Mercado> GetMercados()
         {
 

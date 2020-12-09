@@ -24,4 +24,24 @@ namespace PlaceMyBetOficial.Models.objects
         
         
     }
+
+    public class EventoDTO
+    {
+        public string Local { get; set; }
+        public string Visitante { get; set; }
+
+        public EventoDTO()
+        {
+
+        }
+        public EventoDTO(string local, string visitante)
+        {
+            this.Local = local;
+            this.Visitante = visitante;
+            
+
+        }
+
+        
+    }
 }

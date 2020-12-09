@@ -1,4 +1,5 @@
 ﻿using Antlr.Runtime.Tree;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using PlaceMyBetOficial.Models.objects;
 using System;
@@ -16,40 +17,16 @@ namespace PlaceMyBetOficial.Models
     public class ApuestaRepository
     {
 
-        //    DataBase database = null;
 
-        //    public ApuestaRepository()
-        //    {
-        //        database = new DataBase();
-
-        //        CultureInfo culInfo = new System.Globalization.CultureInfo("es-ES");
-        //        culInfo.NumberFormat.NumberDecimalSeparator = ".";
-        //        culInfo.NumberFormat.CurrencyDecimalSeparator = ".";
-        //        culInfo.NumberFormat.PercentDecimalSeparator = ".";
-        //        culInfo.NumberFormat.CurrencyDecimalSeparator = ".";
-        //        System.Threading.Thread.CurrentThread.CurrentCulture = culInfo;
-        //    }
-
-        internal List<Apuesta> GetApuestas()
+        public List<Apuesta> GetApuestas()
 
         {
-            //database.connect();
-            //MySqlDataReader res = database.query("SELECT * FROM apuestas ");
-
-            //Apuesta apuestas = null;
             List<Apuesta> apuestas = new List<Apuesta>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                apuestas = context.Apuestas.ToList();
+                apuestas = context.Apuestas.Include(p => p.mercados).ToList();
             }
 
-
-            //while (res.Read())
-            //{
-            //    apuestas = new Apuesta(res.GetInt32(0), res.GetString(1), res.GetString(2), res.GetDouble(3), res.GetDouble(4), res.GetDateTime(5), res.GetInt32(6), res.GetString(7));
-            //    apuesta.Add(apuestas);
-            //}
-            //// database.disconnect();
             return apuestas;
         }
 

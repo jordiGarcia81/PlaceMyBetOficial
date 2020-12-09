@@ -13,7 +13,7 @@ namespace PlaceMyBetOficial.Controllers
 {
     public class ApuestasController : ApiController
     {
-
+        private PlaceMyBetContext db = new PlaceMyBetContext();
         //[Route("api/GetApuestas")]
         //[HttpGet]
         public List<Apuesta> Get()

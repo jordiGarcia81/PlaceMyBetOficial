@@ -21,13 +21,13 @@ namespace PlaceMyBetOficial.Controllers
             return listEvento;
         }
         //    //[Route("api/GetEventoDTO")]
-        //    //[HttpPost]
-        //    //public List<EventoDTO> GetEventoDTO()
-        //    //{
-        //    //    EventoRepository eventoRepository = new EventoRepository();
-        //    //    List<EventoDTO> listEvento = eventoRepository.GetEventoDTO();
-        //    //    return listEvento;
-        //    //}
+        [HttpPost]
+        public List<EventoDTO> ToDTO()
+        {
+            EventoRepository eventoRepository = new EventoRepository();
+            List<EventoDTO> listEvento = eventoRepository.ToDTO();
+            return listEvento;
+        }
 
     }
     //[HttpPost]

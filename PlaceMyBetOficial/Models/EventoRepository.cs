@@ -11,18 +11,10 @@ namespace PlaceMyBetOficial.Models
 {
     public class EventoRepository
     {
-    //DataBase database = null;
-
-    // public EventoRepository()
-    // {
-    //     database = new DataBase();
-    // }
+    
     internal List<Evento> GetEvento()
     {
-        //database.connect();
-        //MySqlDataReader res = database.query("SELECT * FROM eventos");
-
-        //Evento eventos = null;
+        
         List<Evento> eventos = new List<Evento>();
         using (PlaceMyBetContext context = new PlaceMyBetContext())
         {
@@ -30,14 +22,30 @@ namespace PlaceMyBetOficial.Models
                 Debug.WriteLine("eventos" + eventos.Count);
         }
 
-        //while (res.Read())
-        //{
-        //    eventos = new Evento(res.GetInt32(0), res.GetString(1), res.GetString(2), res.GetDateTime(3));
-        //    evento.Add(eventos);
-        //}
-        //database.disconnect();
+        
         return eventos;
     }
+
+        public List<EventoDTO> ToDTO()
+        {
+            List<Evento> evento = new List<Evento>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
+            }
+
+            List<EventoDTO> eventosDTO = new List<EventoDTO>();
+
+            foreach (Evento e in evento)
+            {
+                EventoDTO eventoDTO = new EventoDTO(e.Local, e.Visitante);
+                eventosDTO.Add(eventoDTO);
+            }
+
+            return eventosDTO;
+
+            
+        }
         internal void Save(Evento evento)
         {
             PlaceMyBetContext context = new PlaceMyBetContext();
@@ -46,6 +54,8 @@ namespace PlaceMyBetOficial.Models
             context.SaveChanges();
 
         }
+
+        
 
         // public List<EventoDTO> GetEventoDTO()
         //{
