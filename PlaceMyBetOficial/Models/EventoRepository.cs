@@ -32,6 +32,8 @@ namespace PlaceMyBetOficial.Models
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
                 List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
+                //context.Update(eventos);
+                //context.SaveChanges();
             }
 
            
@@ -48,7 +50,52 @@ namespace PlaceMyBetOficial.Models
 
         }
 
-        
+        public Evento Update(int id)
+        {
+            Evento e;
+
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                e = context.Eventos
+                     .Where(s => s.EventoId == id)
+                     .FirstOrDefault();
+                List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
+                context.Eventos.Update(e);
+                context.SaveChanges();
+            }
+            return e;
+
+
+           
+            
+
+
+        }
+
+        //internal Evento update(int id)
+        //{
+        //    Evento e;
+        //    using (PlaceMyBetContext context = new PlaceMyBetContext())
+        //    {
+        //        e = context.Eventos
+        //               .Where(s => s.EventoId == id)
+        //               .FirstOrDefault();
+        //        List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
+        //        context.Eventos.Update(e);
+        //        context.SaveChanges();
+
+        //    }
+        //    return e;
+
+
+
+
+    //}
+       
+
+    //    }
+
+
 
         // public List<EventoDTO> GetEventoDTO()
         //{

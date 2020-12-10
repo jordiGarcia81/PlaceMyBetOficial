@@ -30,11 +30,12 @@ namespace PlaceMyBetOficial.Controllers
         }
 
     }
-    //[HttpPost]
-    //public void Post([FromBody] Evento evento)
+    //    [HttpPut]
+    //public Evento Update( int id)
     //{
     //    EventoRepository eventoRepository = new EventoRepository();
-    //    eventoRepository.Save(evento);
+    //    Evento evento = eventoRepository.update(id);
+    //    return evento;
 
     //}
 
