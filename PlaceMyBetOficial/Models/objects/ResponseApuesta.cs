@@ -15,7 +15,10 @@ namespace PlaceMyBetOficial.Models.objects
         public double cuotaUnder { get; set; }
         public double dinero { get; set; }
         public Mercado mercados { get; set; }
-
+        public ResponseApuesta()
+        {
+                
+        }
         public ResponseApuesta(string UsuarioId, int idEvento, string TipoApuesta, double cuotaOver, double cuotaUnder, double dinero,Mercado mercado)
         {
             this.UsuarioId = UsuarioId;

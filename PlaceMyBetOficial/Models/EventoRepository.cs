@@ -32,8 +32,7 @@ namespace PlaceMyBetOficial.Models
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
                 List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
-                //context.Update(eventos);
-                //context.SaveChanges();
+               
             }
 
            
@@ -50,69 +49,32 @@ namespace PlaceMyBetOficial.Models
 
         }
 
-        public Evento Update(int id)
+        internal void Put(int id, string local, string visitante)
         {
+            PlaceMyBetContext context = new PlaceMyBetContext();
             Evento e;
-
-            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            using (context)
             {
-                e = context.Eventos
-                     .Where(s => s.EventoId == id)
-                     .FirstOrDefault();
-                List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
-                context.Eventos.Update(e);
+                e = context.Eventos.Single(b => b.EventoId == id);
+                e.Local = local;
+                e.Visitante = visitante;
                 context.SaveChanges();
             }
-            return e;
-
-
-           
-            
-
 
         }
 
-        //internal Evento update(int id)
-        //{
-        //    Evento e;
-        //    using (PlaceMyBetContext context = new PlaceMyBetContext())
-        //    {
-        //        e = context.Eventos
-        //               .Where(s => s.EventoId == id)
-        //               .FirstOrDefault();
-        //        List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
-        //        context.Eventos.Update(e);
-        //        context.SaveChanges();
+        internal void Delete(int id)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+            Evento e;
+            using (context)
+            {
+                e = context.Eventos.Single(b => b.EventoId == id);
+                context.Eventos.Remove(e);
+                context.SaveChanges();
+            }
+        }
 
-        //    }
-        //    return e;
-
-
-
-
-    //}
-       
-
-    //    }
-
-
-
-        // public List<EventoDTO> GetEventoDTO()
-        //{
-        //   // database.connect();
-        //    MySqlDataReader res = database.query("SELECT visitante,local,fecha FROM eventos");
-
-        //    EventoDTO eventos = null;
-        //    List<EventoDTO> evento = new List<EventoDTO>();
-
-        //    while (res.Read())
-        //    {
-        //        eventos = new EventoDTO(res.GetString(0), res.GetString(1), res.GetDateTime(2));
-        //        evento.Add(eventos);
-        //    }
-        //    //database.disconnect();
-        //    return evento;
-        //}
 
 
 

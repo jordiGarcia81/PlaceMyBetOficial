@@ -12,15 +12,15 @@ namespace PlaceMyBetOficial.Controllers
 {
     public class EventosController : ApiController
     {
-        //[Route("api/GetEvento")]
-        //[HttpGet]
+        [Route("api/GetEvento")]
+        [HttpGet]
         public List<Evento> Get()
         {
             EventoRepository eventoRepository = new EventoRepository();
             List<Evento> listEvento = eventoRepository.GetEvento();
             return listEvento;
         }
-        //    //[Route("api/GetEventoDTO")]
+       [Route("api/GetEventoDTO")]
         [HttpPost]
         public EventoDTO ToDTO(Evento e )
         {
@@ -29,15 +29,21 @@ namespace PlaceMyBetOficial.Controllers
             return ToDTO;
         }
 
-    }
-    //    [HttpPut]
-    //public Evento Update( int id)
-    //{
-    //    EventoRepository eventoRepository = new EventoRepository();
-    //    Evento evento = eventoRepository.update(id);
-    //    return evento;
+        [HttpPut]
+        public void Put(int id, string local, string visitante)
+        {
+            EventoRepository rep = new EventoRepository();
+            rep.Put(id, local, visitante);
+        }
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            EventoRepository rep = new EventoRepository();
+            rep.Delete(id);
+        }
 
-    //}
+    }
+   
 
 }
     
