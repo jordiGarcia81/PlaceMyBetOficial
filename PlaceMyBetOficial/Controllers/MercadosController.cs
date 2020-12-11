@@ -48,12 +48,12 @@ namespace PlaceMyBetOficial.Controllers
         }
         [Route("api/insert")]
         [HttpPut]
-        public bool insert(Mercado mercado)
+        public void insert(Mercado mercado)
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
 
-            bool result = mercadoRepository.insert(mercado);
-            return result;
+           mercadoRepository.insert(mercado);
+            
 
         }
 

@@ -15,7 +15,7 @@ namespace PlaceMyBetOficial.Models.objects
         public double DineroUnder { get; set; }
         public int EventoId { get; set; }
         public Evento eventos { get; set; }
-
+        //lista apuestas
         public Mercado()
         {
         }

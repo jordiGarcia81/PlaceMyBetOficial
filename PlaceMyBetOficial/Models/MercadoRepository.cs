@@ -90,31 +90,28 @@ namespace PlaceMyBetOficial.Models
 
             return mercado;
         }
-        public bool insert(Mercado mercado)
+        public void insert(Mercado mercado)
         {
             PlaceMyBetContext db = new PlaceMyBetContext();
 
-            if (!checkMercado(mercado))
-            {
-                return false;
-            }
+           
 
             db.Mercados.Add(mercado);
-            db.Mercados.Update(mercado);
+            
             db.SaveChanges();
 
-            return true;
+           
         }
 
-        private bool checkMercado(Mercado mercado)
-        {
-            //if (mercado.OverUnder == "1.5" || mercado.OverUnder == "2.5" || mercado.OverUnder == "3.5")
-            //{
-            //    return true;
-            //}
+        //private bool checkMercado(Mercado mercado)
+        //{
+        //    //if (mercado.OverUnder == "1.5" || mercado.OverUnder == "2.5" || mercado.OverUnder == "3.5")
+        //    //{
+        //    //    return true;
+        //    //}
 
-            return false;
-        }
+        //    return false;
+        //}
 
 
     }

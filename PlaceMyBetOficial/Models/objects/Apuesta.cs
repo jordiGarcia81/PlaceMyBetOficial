@@ -15,6 +15,7 @@ namespace PlaceMyBetOficial.Models.objects
         public int MercadoId{ get; set; }
         public string UsuarioId { get; set; }
         public Mercado mercados { get; set; }
+        //objeto usuario
         public Apuesta()
         {
         }
