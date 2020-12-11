@@ -13,7 +13,7 @@ namespace PlaceMyBetOficial.Models.objects
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Mercado> Mercados { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<ResponseApuesta> ResponseApuestas { get; set; }
+        //public DbSet<ResponseApuesta> ResponseApuestas { get; set; }
 
         public PlaceMyBetContext() { }
 

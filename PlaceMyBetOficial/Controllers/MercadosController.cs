@@ -13,12 +13,20 @@ namespace PlaceMyBetOficial.Controllers
     {
         private PlaceMyBetContext db = new PlaceMyBetContext();
 
-        //[Route("api/GetMercados")]
-        //[HttpGet]
-        public List<Mercado> Get()
+        [Route("api/GetMercados")]//recuperar todos los mercados
+        [HttpGet]
+        public List<Mercado> GetMercados()
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
             List<Mercado> listmercado = mercadoRepository.GetMercados();
+            return listmercado;
+        }
+        [Route("api/GetMercadosEvento")]//recuperar todos los mercados y eventos
+        [HttpGet]
+        public List<Mercado> GetMercadosEvento()
+        {
+            MercadoRepository mercadoRepository = new MercadoRepository();
+            List<Mercado> listmercado = mercadoRepository.GetMercadosEvento();
             return listmercado;
         }
 
@@ -30,32 +38,26 @@ namespace PlaceMyBetOficial.Controllers
             List<MercadoDTO> listmercado = mercadoRepository.GetMercadosDTO();
             return listmercado;
         }
-        [Route("api/GetMercado")]
+        [Route("api/GetMercadoId")]//recuperar todos los mercados a partir de un Id
         [HttpPost]
-        public Mercado GetMercado(int id)
+        public Mercado GetMercadoId(int id)
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
             Mercado mercado = mercadoRepository.GetMercadoId(id);
             return mercado;
         }
+        [Route("api/insert")]
         [HttpPut]
         public bool insert(Mercado mercado)
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
+
             bool result = mercadoRepository.insert(mercado);
             return result;
-        }
-        
 
-        //    // api/getMercadosEvent?idEvento=1&overUnder=1.5
-        //    [Route("api/getMercadosEvent")]
-        //    [HttpPost]
-        //    public List<Mercado> getMercadosEvent(int idEvento, string overUnder)
-        //    {
-        //        MercadoRepository mercadoRepository = new MercadoRepository();
-        //        List<Mercado> mercados = mercadoRepository.getMercadosEvent(idEvento,overUnder);
-        //        return mercados;
-        //    }
+        }
+
+       
 
 
 

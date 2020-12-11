@@ -31,7 +31,7 @@ namespace PlaceMyBetOficial.Models
            
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
+                List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); 
                
             }
 

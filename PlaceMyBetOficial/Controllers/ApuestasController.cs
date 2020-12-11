@@ -16,24 +16,32 @@ namespace PlaceMyBetOficial.Controllers
         private PlaceMyBetContext db = new PlaceMyBetContext();
         [Route("api/GetApuestas")]
         [HttpGet]
-        public List<Apuesta> GetApuestas()
+        public List<Apuesta> GetApuestas()// recuperar todas las apuestas AE5
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
             List<Apuesta> listApuesta = apuestaRepository.GetApuestas();
             return listApuesta;
         }
-        [Route("api/GetApuesta")]
-        [HttpPost]
-        public Apuesta GetApuesta(int id)
+        [Route("api/GetApuestasMercado")]
+        [HttpGet]
+        public List<Apuesta> GetApuestasMercado()
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
-            Apuesta apuesta = apuestaRepository.GetApuestas(id);
+            List<Apuesta> listApuesta = apuestaRepository.GetApuestasMercado();
+            return listApuesta;
+        }
+        [Route("api/GetApuestaId")]
+        [HttpPost]
+        public Apuesta GetApuestaId(int id)// recuperar todas las apuestas  partir de un Id AE5
+        {
+            ApuestaRepository apuestaRepository = new ApuestaRepository();
+            Apuesta apuesta = apuestaRepository.GetApuestaId(id);
             return apuesta;
         }
 
         [HttpPut]
         [Route("api/InsertarApuestas")]
-        public bool InsertarApuestas(Apuesta apuesta)
+        public bool Insertar(Apuesta apuesta)
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
             if (!apuestaRepository.Insertar(apuesta)) return false;
@@ -41,30 +49,13 @@ namespace PlaceMyBetOficial.Controllers
             return true;
         }
         [Route("api/GetApuestaDTO")]
-        [HttpGet]
+        [HttpPost]
         public List<ApuestaDTO> GetApuestaDTO()
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
             List<ApuestaDTO> listApuesta = apuestaRepository.GetApuestaDTO();
             return listApuesta;
         }
-        //    // api/getApuestaUsuario?usuariosEmail=jordigarcia%40gmail.com&mercadosIdMercado=1
-        //    [HttpPost]
-        //    [Route("api/getApuestaUsuario")]
-        //    public List<ResponseApuestasUsuario> getApuestaUsuario(string usuariosEmail, int mercadosIdMercado)
-        //    {
-        //        ApuestaRepository apuestaRepository = new ApuestaRepository();
-        //        List<ResponseApuestasUsuario> apuestas = apuestaRepository.getApuestaUsuario(usuariosEmail, mercadosIdMercado);
-        //        return apuestas;
-        //    }
-        //    // api/getApuestaMercado?usuariosEmail=jordigarcia%40gmail.com&tipoMercado=1.5
-        //    [Route("api/getApuestaMercado")]
-        //    [HttpPost]
-        //    public List<ResponseApuestasMercado> getApuestaMercado(string usuariosEmail, double tipoMercado)
-        //    {
-        //        ApuestaRepository apuestaRepository = new ApuestaRepository();
-        //        List<ResponseApuestasMercado> apuestas = apuestaRepository.getApuestaMercado(usuariosEmail, tipoMercado);
-        //        return apuestas;
-        //    }
+       
     }
 }

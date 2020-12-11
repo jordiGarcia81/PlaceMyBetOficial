@@ -14,7 +14,7 @@ namespace PlaceMyBetOficial.Controllers
     {
         [Route("api/GetEvento")]
         [HttpGet]
-        public List<Evento> Get()
+        public List<Evento> Get()// recuperar Todos los eventos AE5
         {
             EventoRepository eventoRepository = new EventoRepository();
             List<Evento> listEvento = eventoRepository.GetEvento();

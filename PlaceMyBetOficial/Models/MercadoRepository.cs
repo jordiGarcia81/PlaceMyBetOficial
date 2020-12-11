@@ -19,7 +19,22 @@ namespace PlaceMyBetOficial.Models
             List<Mercado> mercados = new List<Mercado>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
+                // mercados = context.Mercados.Include(p => p.eventos).ToList();
+                mercados = context.Mercados.ToList();
+            }
+
+
+            return mercados;
+
+        }
+        public List<Mercado> GetMercadosEvento()
+        {
+
+            List<Mercado> mercados = new List<Mercado>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
                 mercados = context.Mercados.Include(p => p.eventos).ToList();
+                mercados = context.Mercados.ToList();
             }
 
 
@@ -79,11 +94,13 @@ namespace PlaceMyBetOficial.Models
         {
             PlaceMyBetContext db = new PlaceMyBetContext();
 
-            if (!checkMercado(mercado)) {
+            if (!checkMercado(mercado))
+            {
                 return false;
             }
 
             db.Mercados.Add(mercado);
+            db.Mercados.Update(mercado);
             db.SaveChanges();
 
             return true;
@@ -91,14 +108,14 @@ namespace PlaceMyBetOficial.Models
 
         private bool checkMercado(Mercado mercado)
         {
-            if(mercado.OverUnder=="1.5"|| mercado.OverUnder == "2.5"||mercado.OverUnder == "3.5")
-            {
-                return true;
-            }
+            //if (mercado.OverUnder == "1.5" || mercado.OverUnder == "2.5" || mercado.OverUnder == "3.5")
+            //{
+            //    return true;
+            //}
 
             return false;
         }
-       
+
 
     }
 
