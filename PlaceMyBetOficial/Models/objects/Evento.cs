@@ -11,8 +11,8 @@ namespace PlaceMyBetOficial.Models.objects
         public string Visitante { get; set; }
         public string Local { get; set; }
         public DateTime Fecha { get; set; }
-        public Mercado Mercado { get; set; }
-       // puclic List<Mercado>
+       // public Mercado Mercados { get; set; }
+        public List<Mercado> Mercados { get; set; }
 
         public Evento(int eventoId, string visitante, string local, DateTime fecha)
         {

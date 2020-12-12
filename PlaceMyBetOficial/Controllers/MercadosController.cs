@@ -47,7 +47,7 @@ namespace PlaceMyBetOficial.Controllers
             return mercado;
         }
         [Route("api/insert")]
-        [HttpPut]
+        [HttpPost]
         public void insert(Mercado mercado)
         {
             MercadoRepository mercadoRepository = new MercadoRepository();

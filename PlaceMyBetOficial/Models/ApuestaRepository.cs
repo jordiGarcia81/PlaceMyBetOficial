@@ -24,7 +24,7 @@ namespace PlaceMyBetOficial.Models
             List<Apuesta> apuestas = new List<Apuesta>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                apuestas = context.Apuestas.Include(p => p.mercados).ToList();
+                apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
             }
 
             return apuestas;
@@ -132,7 +132,7 @@ namespace PlaceMyBetOficial.Models
             List<Apuesta> apuestas = new List<Apuesta>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                apuestas = context.Apuestas.Include(p => p.mercados).ToList();
+                //apuestas = context.Apuestas.Include(p => p.Mercados.ToList());
             }
 
             List<ApuestaDTO> apuestaDTO = new List<ApuestaDTO>();

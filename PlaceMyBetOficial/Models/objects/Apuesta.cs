@@ -14,8 +14,8 @@ namespace PlaceMyBetOficial.Models.objects
         public DateTime Fecha { get; set; }
         public int MercadoId{ get; set; }
         public string UsuarioId { get; set; }
-        public Mercado mercados { get; set; }
-        //objeto usuario
+        public Mercado Mercados { get; set; }
+        public Usuario Usuarios { get; set; }
         public Apuesta()
         {
         }
