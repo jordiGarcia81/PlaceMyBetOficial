@@ -39,7 +39,7 @@ namespace PlaceMyBetOficial.Controllers
             return apuesta;
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("api/InsertarApuestas")]
         public bool Insertar(Apuesta apuesta)
         {

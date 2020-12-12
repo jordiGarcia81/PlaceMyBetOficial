@@ -58,27 +58,27 @@ namespace PlaceMyBetOficial.Models
 
        
 
-        public bool CheckApuestas(Apuesta a)
-        {
-            switch (a.TipoMercado)
-            {
-                case "1.5":
-                case "2.5":
-                case "3.5":
-                    if ((a.TipoApuesta == "over" || a.TipoApuesta == "under") ) return true;
-                    else return false;
-                default:
-                    return false;
-            }
-        }
+        //public bool CheckApuestas(Apuesta a)
+        //{
+        //    switch (a.TipoMercado)
+        //    {
+        //        case "1.5":
+        //        case "2.5":
+        //        case "3.5":
+        //            if ((a.TipoApuesta == "over" || a.TipoApuesta == "under") ) return true;
+        //            else return false;
+        //        default:
+        //            return false;
+        //    }
+        //}
     
         public bool Insertar (Apuesta apuesta)
         {
             PlaceMyBetContext db = new PlaceMyBetContext();
-            if (!CheckApuestas(apuesta))
-            {
-                return false;
-            }
+            //if (!CheckApuestas(apuesta))
+            //{
+            //    return false;
+            //}
             //Inserta Apuesta
             db.Apuestas.Add(apuesta);
             db.SaveChanges();
@@ -126,20 +126,23 @@ namespace PlaceMyBetOficial.Models
             double cuotaUnder = (1 / probabilidadUnder) * 0.95;
             return cuotaUnder;
         }
-
+        static ApuestaDTO ToDTO(Apuesta a)
+        {
+            return new ApuestaDTO(a.UsuarioId, a.Mercados.EventoId, a.TipoApuesta, a.Mercados.CuotaOver, a.Mercados.CuotaUnder, a.Dinero);
+        }
         public List<ApuestaDTO> GetApuestaDTO()
         {
             List<Apuesta> apuestas = new List<Apuesta>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                //apuestas = context.Apuestas.Include(p => p.Mercados.ToList());
+                apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
             }
 
             List<ApuestaDTO> apuestaDTO = new List<ApuestaDTO>();
 
             foreach (Apuesta a in apuestas)
             {
-                ApuestaDTO apuestaDto = new ApuestaDTO();
+                ApuestaDTO apuestaDto = ToDTO(a);
                 apuestaDTO.Add(apuestaDto);
             }
 

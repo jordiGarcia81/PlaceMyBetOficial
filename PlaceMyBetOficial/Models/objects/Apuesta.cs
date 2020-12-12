@@ -43,13 +43,13 @@ namespace PlaceMyBetOficial.Models.objects
         public double CuotaOver { get; set; }
         public double CuotaUnder { get; set; }
         public double Dinero { get; set; }
-        public Mercado Mercados { get; set; }
+   
 
         public ApuestaDTO()
         {
 
         }
-        public ApuestaDTO(string usuarioId, int idEvento, string tipoApuesta, double cuotaOver, double cuotaUnder, double dinero, Mercado mercados)
+        public ApuestaDTO(string usuarioId, int idEvento, string tipoApuesta, double cuotaOver, double cuotaUnder, double dinero)
         {
             this.UsuarioId = usuarioId;
             this.IdEvento = idEvento;
@@ -57,7 +57,7 @@ namespace PlaceMyBetOficial.Models.objects
             this.CuotaOver = cuotaOver;
             this.CuotaUnder = cuotaUnder;
             this.Dinero = dinero;
-            this.Mercados = mercados;
+          
         }
 
        

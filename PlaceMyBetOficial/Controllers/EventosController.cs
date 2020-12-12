@@ -22,11 +22,11 @@ namespace PlaceMyBetOficial.Controllers
         }
        [Route("api/GetEventoDTO")]
         [HttpPost]
-        public EventoDTO ToDTO(Evento e )
+        public List<EventoDTO> GetEventoDTO()
         {
             EventoRepository eventoRepository = new EventoRepository();
-            EventoDTO ToDTO = eventoRepository.ToDTO(e);
-            return ToDTO;
+            List<EventoDTO> eventos = eventoRepository.GetEventoDTO();
+            return eventos;
         }
 
         [HttpPut]

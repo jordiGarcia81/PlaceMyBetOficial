@@ -19,26 +19,27 @@ namespace PlaceMyBetOficial.Models
         using (PlaceMyBetContext context = new PlaceMyBetContext())
         {
             eventos = context.Eventos.ToList();
-                Debug.WriteLine("eventos" + eventos.Count);
+            Debug.WriteLine("eventos" + eventos.Count);
         }
 
-        
         return eventos;
     }
-
-        public EventoDTO ToDTO(Evento e)
+        internal List<EventoDTO> GetEventoDTO()
         {
-           
+
+            List<EventoDTO> eventos = new List<EventoDTO>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                List<EventoDTO> eventos = context.Eventos.Select(p => ToDTO(p)).ToList(); 
-               
+                eventos = context.Eventos.Select(p => ToDTO(p)).ToList();
+                Debug.WriteLine("eventos" + eventos.Count);
             }
 
-           
+            return eventos;
+        }
+
+        static EventoDTO ToDTO(Evento e)
+        {
             return  new EventoDTO(e.Local, e.Visitante);
-
-
         }
         internal void Save(Evento evento)
         {
