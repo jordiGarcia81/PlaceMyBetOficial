@@ -56,7 +56,7 @@ namespace PlaceMyBetOficial.Models
             return apuesta;
         }
 
-       
+
 
         //public bool CheckApuestas(Apuesta a)
         //{
@@ -71,8 +71,8 @@ namespace PlaceMyBetOficial.Models
         //            return false;
         //    }
         //}
-    
-        public bool Insertar (Apuesta apuesta)
+
+        public bool Insertar(Apuesta apuesta)
         {
             PlaceMyBetContext db = new PlaceMyBetContext();
             //if (!CheckApuestas(apuesta))
@@ -109,7 +109,7 @@ namespace PlaceMyBetOficial.Models
             }
             catch (EntityException ex) { }
 
-           
+
             return true;
         }
 
@@ -126,27 +126,55 @@ namespace PlaceMyBetOficial.Models
             double cuotaUnder = (1 / probabilidadUnder) * 0.95;
             return cuotaUnder;
         }
-        static ApuestaDTO ToDTO(Apuesta a)
+        //static ApuestaDTO ToDTO(Apuesta a)
+        //{
+        //    return new ApuestaDTO(a.UsuarioId, a.Mercados.EventoId, a.TipoApuesta, a.Mercados.CuotaOver, a.Mercados.CuotaUnder, a.Dinero);
+        //}
+        //public List<ApuestaDTO> GetApuestaDTO()
+        //{
+        //    List<Apuesta> apuestas = new List<Apuesta>();
+        //    using (PlaceMyBetContext context = new PlaceMyBetContext())
+        //    {
+        //        apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
+        //    }
+
+        //    List<ApuestaDTO> apuestaDTO = new List<ApuestaDTO>();
+
+        //    foreach (Apuesta a in apuestas)
+        //    {
+        //        ApuestaDTO apuestaDto = ToDTO(a);
+        //        apuestaDTO.Add(apuestaDto);
+        //    }
+
+        //    return apuestaDTO;
+        //}
+
+        static Apuesta2DTO ToDTO(Apuesta a)
         {
-            return new ApuestaDTO(a.UsuarioId, a.Mercados.EventoId, a.TipoApuesta, a.Mercados.CuotaOver, a.Mercados.CuotaUnder, a.Dinero);
+            return new Apuesta2DTO(a.Dinero, a.TipoApuesta, a.Mercados.local, a.Mercados.visitante);
         }
-        public List<ApuestaDTO> GetApuestaDTO()
+
+        public List<Apuesta2DTO> GetApuesta2DTO()
         {
             List<Apuesta> apuestas = new List<Apuesta>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
+                apuestas = context.Apuestas.Include(p => p.Mercados.MercadoId).ToList();
             }
 
-            List<ApuestaDTO> apuestaDTO = new List<ApuestaDTO>();
+            List<Apuesta2DTO> apuestaDTO = new List<Apuesta2DTO>();
 
             foreach (Apuesta a in apuestas)
             {
-                ApuestaDTO apuestaDto = ToDTO(a);
+                Apuesta2DTO apuestaDto = ToDTO(a);
                 apuestaDTO.Add(apuestaDto);
             }
 
             return apuestaDTO;
         }
+
     }
+
 }
+
+       

@@ -49,13 +49,22 @@ namespace PlaceMyBetOficial.Controllers
             return true;
         }
         [Route("api/GetApuestaDTO")]
+        //[HttpPost]
+        //public List<ApuestaDTO> GetApuestaDTO()
+        //{
+        //    ApuestaRepository apuestaRepository = new ApuestaRepository();
+        //    List<ApuestaDTO> listApuesta = apuestaRepository.GetApuestaDTO();
+        //    return listApuesta;
+        //}
+
+        [Route("api/GetApuesta2DTO")]
         [HttpPost]
-        public List<ApuestaDTO> GetApuestaDTO()
+        public List<Apuesta2DTO> GetApuesta2DTO()
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
-            List<ApuestaDTO> listApuesta = apuestaRepository.GetApuestaDTO();
+            List<Apuesta2DTO> listApuesta = apuestaRepository.GetApuesta2DTO();
             return listApuesta;
         }
-       
+
     }
 }

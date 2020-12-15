@@ -104,8 +104,8 @@ namespace PlaceMyBetOficial.Models
         }
 
         static Mercado2DTO ToDTO(Mercado m)
-        {
-            return new Mercado2DTO(m.MercadoId,m.Apuestas.Dinero,m.Apuestas.TipoApuesta,m.Usuarios.Nombre);
+        {   
+            return new Mercado2DTO(m.MercadoId,m.Apuestas,m.Apuestas.TipoApuesta, m.Usuarios.Nombre);
         }
 
         public List<Mercado2DTO> GetMercado2DTO()
@@ -133,4 +133,4 @@ namespace PlaceMyBetOficial.Models
 
 }
 
-    }
+    
