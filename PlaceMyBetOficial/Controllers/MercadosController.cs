@@ -56,8 +56,17 @@ namespace PlaceMyBetOficial.Controllers
             
 
         }
+        [Route("api/GetMercado2DTO")]
+        [HttpPost]
+        public List<Mercado2DTO> GetMercado2DTO()
+        {
+            MercadoRepository mercadoRepository = new MercadoRepository();
+            List<Mercado2DTO> listMercado = mercadoRepository.GetMercado2DTO();
+            return listMercado;
+        }
 
-       
+
+
 
 
 

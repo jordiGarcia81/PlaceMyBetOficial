@@ -103,17 +103,34 @@ namespace PlaceMyBetOficial.Models
            
         }
 
-        //private bool checkMercado(Mercado mercado)
-        //{
-        //    //if (mercado.OverUnder == "1.5" || mercado.OverUnder == "2.5" || mercado.OverUnder == "3.5")
-        //    //{
-        //    //    return true;
-        //    //}
+        static Mercado2DTO ToDTO(Mercado m)
+        {
+            return new Mercado2DTO(m.MercadoId,m.Apuestas.Dinero,m.Apuestas.TipoApuesta,m.Usuarios.Nombre);
+        }
 
-        //    return false;
-        //}
+        public List<Mercado2DTO> GetMercado2DTO()
+        {
+            List<Mercado> mercados = new List<Mercado>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                mercados = context.Mercados.Include(p => p.Apuestas).ToList();
+            }
 
+            List<Mercado2DTO> mercadoDTO = new List<Mercado2DTO>();
 
+            foreach (Mercado m in mercados)
+            {
+                Mercado2DTO mercado2Dto = ToDTO(m);
+                mercadoDTO.Add(mercado2Dto);
+            }
+
+            return mercadoDTO;
+        }
     }
+
+   
+
+
+}
 
     }
