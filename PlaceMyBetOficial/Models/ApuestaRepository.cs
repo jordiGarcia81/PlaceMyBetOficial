@@ -151,25 +151,31 @@ namespace PlaceMyBetOficial.Models
 
         static Apuesta2DTO ToDTO(Apuesta a)
         {
-            return new Apuesta2DTO(a.Dinero, a.TipoApuesta, a.Mercados.local, a.Mercados.visitante);
+            return null;
         }
 
-        public List<Apuesta2DTO> GetApuesta2DTO()
+        public List<Apuesta2DTO> GetApuesta2DTO(int dinero)
         {
             List<Apuesta> apuestas = new List<Apuesta>();
-            using (PlaceMyBetContext context = new PlaceMyBetContext())
-            {
-                apuestas = context.Apuestas.Include(p => p.Mercados.MercadoId).ToList();
-            }
-
             List<Apuesta2DTO> apuestaDTO = new List<Apuesta2DTO>();
 
-            foreach (Apuesta a in apuestas)
-            {
-                Apuesta2DTO apuestaDto = ToDTO(a);
-                apuestaDTO.Add(apuestaDto);
-            }
+            Evento evento = new Evento();
 
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
+
+                foreach (Apuesta a in apuestas)
+                {
+
+                    evento = context.Eventos
+                    .Where(s => s.EventoId == a.Mercados.EventoId)
+                    .FirstOrDefault();
+
+                    Apuesta2DTO mercado2Dto = new Apuesta2DTO(a.TipoApuesta, evento.Local, evento.Visitante);
+                    if(dinero > a.Dinero) apuestaDTO.Add(mercado2Dto);
+                }
+            }
             return apuestaDTO;
         }
 

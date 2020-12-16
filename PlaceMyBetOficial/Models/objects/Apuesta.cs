@@ -66,7 +66,6 @@ namespace PlaceMyBetOficial.Models.objects
     public class Apuesta2DTO
 
     {
-        public int Dinero { get; set; }
         public string TipoApuesta { get; set; }
         public string Local { get; set; }
         public string Visitante { get; set; }
@@ -75,9 +74,8 @@ namespace PlaceMyBetOficial.Models.objects
         {
 
         }
-        public Apuesta2DTO(int dinero,string tipoApuesta,string local,string visitante)
+        public Apuesta2DTO(string tipoApuesta,string local,string visitante)
         {
-            this.Dinero = dinero;
             this.TipoApuesta = tipoApuesta;
             this.Local = local;
             this.Visitante = visitante;

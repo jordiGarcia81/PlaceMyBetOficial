@@ -40,10 +40,10 @@ namespace PlaceMyBetOficial.Controllers
         }
         [Route("api/GetMercadoId")]//recuperar todos los mercados a partir de un Id
         [HttpPost]
-        public Mercado GetMercadoId(int id)
+        public List<Mercado2DTO> GetMercadoId(int id)
         {
             MercadoRepository mercadoRepository = new MercadoRepository();
-            Mercado mercado = mercadoRepository.GetMercadoId(id);
+            List<Mercado2DTO> mercado = mercadoRepository.GetMercadoId(id);
             return mercado;
         }
         [Route("api/insert")]
