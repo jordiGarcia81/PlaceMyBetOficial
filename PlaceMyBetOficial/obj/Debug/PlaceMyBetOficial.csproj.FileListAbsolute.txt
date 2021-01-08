@@ -366,3 +366,6 @@ C:\proyectos\PlaceMyBetOficial\PlaceMyBetOficial\PlaceMyBetOficial\obj\Debug\Pla
 C:\proyectos\PlaceMyBetOficial\PlaceMyBetOficial\PlaceMyBetOficial\obj\Debug\PlaceMyBetOficial.csproj.CopyComplete
 C:\proyectos\PlaceMyBetOficial\PlaceMyBetOficial\PlaceMyBetOficial\obj\Debug\PlaceMyBetOficial.dll
 C:\proyectos\PlaceMyBetOficial\PlaceMyBetOficial\PlaceMyBetOficial\obj\Debug\PlaceMyBetOficial.pdb
+C:\proyectos\PlaceMyBetOficial\PlaceMyBetOficial\PlaceMyBetOficial\bin\System.Web.Cors.dll
+C:\proyectos\PlaceMyBetOficial\PlaceMyBetOficial\PlaceMyBetOficial\bin\System.Web.Http.Cors.dll
+C:\proyectos\PlaceMyBetOficial\PlaceMyBetOficial\PlaceMyBetOficial\bin\System.Web.Http.Cors.xml

@@ -16,7 +16,7 @@ namespace PlaceMyBetOficial.Controllers
         /// metodo que devuelve lista de usuarios
         /// </summary>
         /// <returns>Lista de usuarios</returns>
-       [Authorize(Roles = "Standard")]
+      // [Authorize(Roles = "Standard")]
         public List<Usuario> GetUsuarios()
         {
             UsuarioRepository userrepo = new UsuarioRepository();
