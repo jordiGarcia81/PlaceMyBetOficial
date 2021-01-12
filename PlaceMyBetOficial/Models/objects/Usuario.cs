@@ -23,4 +23,26 @@ namespace PlaceMyBetOficial.Models.objects
         }
 
     }
+
+    public class UsuarioDTO
+    {
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
+        public string UsuarioId { get; set; }
+
+        public UsuarioDTO()
+        {
+
+        }
+        public UsuarioDTO(string nombre, string apellidos,string usuarioId)
+        {
+            this.Nombre = nombre;
+            this.Apellidos = apellidos;
+            this.UsuarioId = usuarioId;
+
+
+        }
+
+
+    }
 }

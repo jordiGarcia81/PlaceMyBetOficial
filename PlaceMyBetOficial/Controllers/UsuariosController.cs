@@ -26,5 +26,29 @@ namespace PlaceMyBetOficial.Controllers
             List<Usuario> usuarios = userrepo.GetUsuarios();
             return usuarios;
         }
+        [Route("api/DeleteUsuarios")]
+        [HttpDelete]
+        public void Delete(string usuario)
+        {
+            UsuarioRepository rep = new UsuarioRepository();
+            rep.Delete(usuario);
+        }
+
+        //[Route("api/GetUsuarioDTO")]
+        //[HttpPost]
+        //public List<UsuarioDTO> GetUsuarioDTO()
+        //{
+        //    UsuarioRepository usuarioRepository = new UsuarioRepository();
+        //    List<UsuarioDTO> usuarios = usuarioRepository.GetUsuarioDTO();
+        //    return usuarios;
+        //}
+        [Route("api/Filter")]
+        [HttpPost]
+        public List<Usuario> Filter(string searchString)
+        {
+            UsuarioRepository usuarioRepository = new UsuarioRepository();
+            List<Usuario> usuarios = usuarioRepository.Filter(searchString);
+            return usuarios;
+        }
     }
 }
