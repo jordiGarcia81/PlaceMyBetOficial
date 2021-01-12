@@ -42,7 +42,7 @@ namespace PlaceMyBetOficial.Controllers
         //    List<UsuarioDTO> usuarios = usuarioRepository.GetUsuarioDTO();
         //    return usuarios;
         //}
-        [Route("api/Filter")]
+        [Route("api/FilterUsuarios")]
         [HttpPost]
         public List<Usuario> Filter(string searchString)
         {

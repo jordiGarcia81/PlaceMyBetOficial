@@ -22,14 +22,14 @@ namespace PlaceMyBetOficial.Controllers
             List<Apuesta> listApuesta = apuestaRepository.GetApuestas();
             return listApuesta;
         }
-        [Route("api/GetApuestasMercado")]
-        [HttpGet]
-        public List<Apuesta> GetApuestasMercado()
-        {
-            ApuestaRepository apuestaRepository = new ApuestaRepository();
-            List<Apuesta> listApuesta = apuestaRepository.GetApuestasMercado();
-            return listApuesta;
-        }
+        //[Route("api/GetApuestasMercado")]
+        //[HttpGet]
+        //public List<Apuesta> GetApuestasMercado()
+        //{
+        //    ApuestaRepository apuestaRepository = new ApuestaRepository();
+        //    List<Apuesta> listApuesta = apuestaRepository.GetApuestasMercado();
+        //    return listApuesta;
+        //}
         [Route("api/GetApuestaId")]
         [HttpPost]
         public Apuesta GetApuestaId(int id)// recuperar todas las apuestas  partir de un Id AE5

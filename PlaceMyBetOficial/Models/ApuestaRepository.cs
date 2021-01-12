@@ -148,5 +148,20 @@ namespace PlaceMyBetOficial.Models
 
             return apuestaDTO;
         }
+
+        public List<Apuesta> Filter(string searchString,int searchInt)
+        {
+            List<Apuesta> apuestas = new List<Apuesta>();
+
+           
+            
+                apuestas = (List<Apuesta>)apuestas.Where(s => s.UsuarioId.Contains(searchString) || s.MercadoId.Contains(searchInt) || s.UsuarioId.Contains(searchString));
+
+            
+            
+
+
+            return usuarios;
+        }
     }
 }
