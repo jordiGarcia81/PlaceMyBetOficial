@@ -61,25 +61,29 @@ namespace PlaceMyBetOficial.Models.objects
         }
 
     }
-    //ex
-    //public class Apuesta2DTO
 
-    //{
-    //    public string TipoApuesta { get; set; }
-    //    public string Local { get; set; }
-    //    public string Visitante { get; set; }
 
-    //    public Apuesta2DTO()
-    //    {
 
-    //    }
-    //    public Apuesta2DTO(string tipoApuesta, string local, string visitante)
-    //    {
-    //        this.TipoApuesta = tipoApuesta;
-    //        this.Local = local;
-    //        this.Visitante = visitante;
+    public class Apuesta2DTO
 
-    //    }
-    //}
+    {
+        public int MercadoId { get; set; }
+        public double CuotaOver { get; set; }
+        public double CuotaUnder { get; set; }
+       
+
+        public Apuesta2DTO()
+        {
+
+        }
+        public Apuesta2DTO(int mercadoId, double cuotaOver, double cuotaUnder)
+        {
+            this.MercadoId = mercadoId;
+            this.CuotaOver = cuotaOver;
+            this.CuotaUnder = cuotaUnder;
+
+        }
+    }
+
 
 }

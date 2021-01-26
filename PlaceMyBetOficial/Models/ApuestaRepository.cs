@@ -137,31 +137,33 @@ namespace PlaceMyBetOficial.Models
             return apuestaDTO;
         }
 
+        /** Ejercicio 3 **/
+        public List<Apuesta2DTO> GetApuestaCuota(double CuotaOver, double CuotaUnder)
+        {
+            List<Apuesta> apuestas = new List<Apuesta>();
+            List<Apuesta2DTO> apuestaDTO = new List<Apuesta2DTO>();
+            
 
-        //ex
-        //public List<Apuesta2DTO> GetApuesta2DTO(int dinero)
-        //{
-        //    List<Apuesta> apuestas = new List<Apuesta>();
-        //    List<Apuesta2DTO> apuestaDTO = new List<Apuesta2DTO>();
+            Mercado mercado = new Mercado();
 
-        //    Evento evento = new Evento();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
 
-        //    using (PlaceMyBetContext context = new PlaceMyBetContext())
-        //    {
-        //        apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
+                foreach (Apuesta a in apuestas)
+                {
 
-        //        foreach (Apuesta a in apuestas)
-        //        {
+                    mercado = context.Mercados
+                    .Where(s => s.MercadoId == a.MercadoId)
+                    .FirstOrDefault();
 
-        //            evento = context.Eventos
-        //            .Where(s => s.EventoId == a.Mercados.EventoId)
-        //            .FirstOrDefault();
+                    Apuesta2DTO m = new Apuesta2DTO(a.MercadoId, m.CuotaOver, m.CuotaUnder);
+                    if (m.CuotaOver < m.CuotaOver || m.CuotaUnder < m.CuotaUnder) apuestaDTO.Add(m);
+                }
+            }
+            return apuestaDTO;
+        }
 
-        //            Apuesta2DTO mercado2Dto = new Apuesta2DTO(a.TipoApuesta, evento.Local, evento.Visitante);
-        //            if (dinero > a.Dinero) apuestaDTO.Add(mercado2Dto);
-        //        }
-        //    }
-        //    return apuestaDTO;
-        //}
+       
     }
 }

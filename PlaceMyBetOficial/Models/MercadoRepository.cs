@@ -102,7 +102,7 @@ namespace PlaceMyBetOficial.Models
 
            
         }
-        //ex
+        
         //static Mercado2DTO ToDTO(Mercado m)
         //{
         //    return null;
