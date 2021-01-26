@@ -225,5 +225,30 @@ namespace PlaceMyBetOficial.Models
             database.disconnect();
             return apuestas;
         }
+        /**Ejercicio1 **/
+        public List<ResponseApuestasCuota> getApuestaCuotas(double cuotaOver, double cuotaUnder, string email)
+        {
+            database.connect();
+            Dictionary<string, string> dicParameters = new Dictionary<string, string>();
+            dicParameters.Add("@CO", Convert.ToString(cuotaOver));
+            dicParameters.Add("@CU", Convert.ToString(cuotaUnder));
+            dicParameters.Add("@UE", email);
+            MySqlDataReader res = database.query_parameters("SELECT SELECT a.Usuarios_email, m.cuota_over,m.cuota_under FROM apuestas a  INNER JOIN mercados m ON m.id_mercado=a.Mercados_id_mercado WHERE cuota_over=@CO AND cuota_under=@CU AND Usuarios_Email=@UE", dicParameters);
+
+            ResponseApuestasCuota apuesta = null;
+            List<ResponseApuestasCuota> apuestas = new List<ResponseApuestasCuota>();
+
+            while (res.Read())
+            {
+
+                apuesta = new ResponseApuestasCuota( res.GetDouble(0), res.GetDouble(1), res.GetString(2) );
+                apuestas.Add(apuesta);
+            }
+            database.disconnect();
+            return apuestas;
+        }
+
+
     }
+    
 }

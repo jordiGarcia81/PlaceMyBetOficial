@@ -335,6 +335,7 @@
     <Compile Include="Models\objects\Cuenta.cs" />
     <Compile Include="Models\objects\Evento.cs" />
     <Compile Include="Models\objects\Mercado.cs" />
+    <Compile Include="Models\objects\ResponseApuestasCuota.cs" />
     <Compile Include="Models\objects\ResponseData.cs" />
     <Compile Include="Models\objects\Usuario.cs" />
     <Compile Include="Models\UsuarioRepository.cs" />
