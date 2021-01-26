@@ -51,4 +51,25 @@ namespace PlaceMyBetOficial.Models.objects
         }
     }
 
+ //   ex
+ //public class Mercado2DTO
+ //   {
+ //       public double Dinero { get; set; }
+ //       public string TipoApuesta { get; set; }
+ //       public string Nombre { get; set; }
+       
+
+
+ //       public Mercado2DTO()
+ //       {
+ //       }
+
+ //       public Mercado2DTO( double dinero, string tipoApuesta,string nombre)
+ //       {
+ //           this.Dinero = dinero;
+ //           this.TipoApuesta = tipoApuesta;
+ //           this.Nombre = nombre;
+ //       }
+ //   }
+
 }

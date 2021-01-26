@@ -10,12 +10,12 @@ using static PlaceMyBetOficial.Models.objects.Apuesta;
 using static PlaceMyBetOficial.Models.objects.ResponseData;
 
 namespace PlaceMyBetOficial.Controllers
-{
+{     [RoutePrefix("api/Apuestas")]
     public class ApuestasController : ApiController
     {
         private PlaceMyBetContext db = new PlaceMyBetContext();
-        [Route("api/GetApuestas")]
-        [HttpGet]
+        [Route("GetApuestas"), HttpGet]
+
         public List<Apuesta> GetApuestas()// recuperar todas las apuestas AE5
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
@@ -30,8 +30,8 @@ namespace PlaceMyBetOficial.Controllers
         //    List<Apuesta> listApuesta = apuestaRepository.GetApuestasMercado();
         //    return listApuesta;
         //}
-        [Route("api/GetApuestaId")]
-        [HttpPost]
+        [Route("GetApuestaId"),HttpPost]
+        
         public Apuesta GetApuestaId(int id)// recuperar todas las apuestas  partir de un Id AE5
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
@@ -39,8 +39,8 @@ namespace PlaceMyBetOficial.Controllers
             return apuesta;
         }
 
-        [HttpPost]
-        [Route("api/InsertarApuestas")]
+        
+        [Route("InsertarApuestas"),HttpPost]
         public bool Insertar(Apuesta apuesta)
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
@@ -48,14 +48,22 @@ namespace PlaceMyBetOficial.Controllers
 
             return true;
         }
-        [Route("api/GetApuestaDTO")]
-        [HttpPost]
+        [Route("GetApuestaDTO"),HttpPost]
+        
         public List<ApuestaDTO> GetApuestaDTO()
         {
             ApuestaRepository apuestaRepository = new ApuestaRepository();
             List<ApuestaDTO> listApuesta = apuestaRepository.GetApuestaDTO();
             return listApuesta;
         }
-       
+        //[Route("GetApuesta2"), HttpGet]
+        
+        //public List<Apuesta2DTO> GetApuesta2(int dinero)
+        //{
+        //    ApuestaRepository apuestaRepository = new ApuestaRepository();
+        //    List<Apuesta2DTO> listApuesta = apuestaRepository.GetApuesta2DTO(dinero);
+        //    return listApuesta;
+        //}
+
     }
 }

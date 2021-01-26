@@ -52,24 +52,24 @@ namespace PlaceMyBetOficial.Models
             return usuarios;
         }
 
-        static UsuarioDTO ToDTO (Usuario u)
+        static UsuarioDTO ToDTO(Usuario u)
         {
-            return new UsuarioDTO(u.Nombre,u.Apellidos,u.UsuarioId);
+            return new UsuarioDTO(u.Nombre, u.Apellidos, u.UsuarioId);
         }
 
-        public List<Usuario> Filter( string searchString)
-        {
-            List<Usuario> usuarios = new List<Usuario>();
+        //public List<Usuario> Filter( string searchString)
+        //{
+        //    List<Usuario> usuarios = new List<Usuario>();
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                usuarios = (List<Usuario>)usuarios.Where(s => s.Nombre.Contains(searchString) || s.Apellidos.Contains(searchString) || s.UsuarioId.Contains(searchString));
-                                         
-            }
-           
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        usuarios = (List<Usuario>)usuarios.Where(s => s.Nombre.Contains(searchString) || s.Apellidos.Contains(searchString) || s.UsuarioId.Contains(searchString));
 
-            return usuarios;
-        }
+        //    }
+
+
+        //    return usuarios;
+        //}
 
     }
 }

@@ -12,7 +12,7 @@ namespace PlaceMyBetOficial.Models.objects
         public string TipoMercado { get; set; }
         public int Dinero { get; set; }
         public DateTime Fecha { get; set; }
-        public int MercadoId{ get; set; }
+        public int MercadoId { get; set; }
         public string UsuarioId { get; set; }
         public Mercado Mercados { get; set; }
         public Usuario Usuarios { get; set; }
@@ -43,7 +43,7 @@ namespace PlaceMyBetOficial.Models.objects
         public double CuotaOver { get; set; }
         public double CuotaUnder { get; set; }
         public double Dinero { get; set; }
-   
+
 
         public ApuestaDTO()
         {
@@ -57,9 +57,29 @@ namespace PlaceMyBetOficial.Models.objects
             this.CuotaOver = cuotaOver;
             this.CuotaUnder = cuotaUnder;
             this.Dinero = dinero;
-          
+
         }
 
-       
     }
+    //ex
+    //public class Apuesta2DTO
+
+    //{
+    //    public string TipoApuesta { get; set; }
+    //    public string Local { get; set; }
+    //    public string Visitante { get; set; }
+
+    //    public Apuesta2DTO()
+    //    {
+
+    //    }
+    //    public Apuesta2DTO(string tipoApuesta, string local, string visitante)
+    //    {
+    //        this.TipoApuesta = tipoApuesta;
+    //        this.Local = local;
+    //        this.Visitante = visitante;
+
+    //    }
+    //}
+
 }

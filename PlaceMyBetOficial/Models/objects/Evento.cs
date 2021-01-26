@@ -22,8 +22,10 @@ namespace PlaceMyBetOficial.Models.objects
             this.Fecha = fecha;
 
         }
-        
-        
+
+        public Evento()
+        {
+        }
     }
 
     public class EventoDTO

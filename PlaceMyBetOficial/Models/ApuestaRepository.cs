@@ -58,19 +58,7 @@ namespace PlaceMyBetOficial.Models
 
        
 
-        //public bool CheckApuestas(Apuesta a)
-        //{
-        //    switch (a.TipoMercado)
-        //    {
-        //        case "1.5":
-        //        case "2.5":
-        //        case "3.5":
-        //            if ((a.TipoApuesta == "over" || a.TipoApuesta == "under") ) return true;
-        //            else return false;
-        //        default:
-        //            return false;
-        //    }
-        //}
+        
     
         public bool Insertar (Apuesta apuesta)
         {
@@ -149,19 +137,31 @@ namespace PlaceMyBetOficial.Models
             return apuestaDTO;
         }
 
-        public List<Apuesta> Filter(string searchString,int searchInt)
-        {
-            List<Apuesta> apuestas = new List<Apuesta>();
 
-           
-            
-                apuestas = (List<Apuesta>)apuestas.Where(s => s.UsuarioId.Contains(searchString) || s.MercadoId.Contains(searchInt) || s.UsuarioId.Contains(searchString));
+        //ex
+        //public List<Apuesta2DTO> GetApuesta2DTO(int dinero)
+        //{
+        //    List<Apuesta> apuestas = new List<Apuesta>();
+        //    List<Apuesta2DTO> apuestaDTO = new List<Apuesta2DTO>();
 
-            
-            
+        //    Evento evento = new Evento();
 
+        //    using (PlaceMyBetContext context = new PlaceMyBetContext())
+        //    {
+        //        apuestas = context.Apuestas.Include(p => p.Mercados).ToList();
 
-            return usuarios;
-        }
+        //        foreach (Apuesta a in apuestas)
+        //        {
+
+        //            evento = context.Eventos
+        //            .Where(s => s.EventoId == a.Mercados.EventoId)
+        //            .FirstOrDefault();
+
+        //            Apuesta2DTO mercado2Dto = new Apuesta2DTO(a.TipoApuesta, evento.Local, evento.Visitante);
+        //            if (dinero > a.Dinero) apuestaDTO.Add(mercado2Dto);
+        //        }
+        //    }
+        //    return apuestaDTO;
+        //}
     }
 }
