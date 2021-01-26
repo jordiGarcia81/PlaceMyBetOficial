@@ -248,6 +248,26 @@ namespace PlaceMyBetOficial.Models
             return apuestas;
         }
 
+        /**Ejercicio 2 **/
+        public List<Apuesta> getApuestaIdMercado(int idMercado)
+        {
+            database.connect();
+            Dictionary<string, string> dicParameters = new Dictionary<string, string>();
+            dicParameters.Add("@IM", Convert.ToString(idMercado));
+            MySqlDataReader res = database.query("SELECT * FROM puestas SELECT * FROM apuestas a WHERE a.Mercados_id_mercado=1");
+
+            Apuesta apuestas = null;
+            List<Apuesta> apuesta = new List<Apuesta>();
+
+            while (res.Read())
+            {
+                apuestas = new Apuesta(res.GetInt32(0), res.GetString(1), res.GetString(2), res.GetDouble(3), res.GetDateTime(4), res.GetInt32(5), res.GetString(6));
+                apuesta.Add(apuestas);
+            }
+            database.disconnect();
+            return apuesta;
+        }
+
 
     }
     

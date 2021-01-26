@@ -65,5 +65,13 @@ namespace PlaceMyBetOficial.Controllers
             List<ResponseApuestasCuota> apuestas = apuestaRepository.getApuestaCuotas(cuotaOver, cuotaUnder, email);
             return apuestas;
         }
+        [Route("api/getApuestaIdMercado")]
+        [HttpPost]
+        public List<Apuesta> getApuestaIdMercado(int idMercado)
+        {
+            ApuestaRepository apuestaRepository = new ApuestaRepository();
+            List<Apuesta> apuestas = apuestaRepository.getApuestaIdMercado(idMercado);
+            return apuestas;
+        }
     }
 }
